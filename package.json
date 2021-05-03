@@ -1,0 +1,16 @@
+{
+  "name": "slides",
+  "version": "0.9.0",
+  "main": "index.js",
+  "repository": "https://github.com/peacock0803sz/slides.git",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "src/*"
+    ]
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@marp-team/marp-cli": "^1.0.1"
+  }
+}
