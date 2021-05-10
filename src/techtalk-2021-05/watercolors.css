@@ -1,0 +1,221 @@
+/* @theme watercolors */
+@import "default";
+
+:root {
+  font-family: "Trenda", "Uビュー R", "Noto Sans CJK JP";
+  width: 1980px;
+  height: 1080px;
+}
+
+a {
+  color: #003366;
+}
+
+pre code {
+  font-family: "Ricty Diminished Discord";
+  font-weight: bold;
+  color: #111;
+  background-color: #eee;
+}
+
+pre code {
+  font-family: "Ricty Diminished Discord";
+  color: #111;
+  background-color: #eee;
+}
+
+section.title {
+  text-align: right;
+}
+
+section.title h1 {
+  color: #020;
+  font-family: "Trenda", "Uビュー R", "Noto Sans CJK JP";
+  font-weight: bold;
+  font-size: 150px;
+  position: absolute;
+  right: 50px;
+  bottom: 100px;
+}
+
+section.title h2 {
+  color: #002200;
+  font-size: 75px;
+  position: absolute;
+  right: 50px;
+  bottom: 0px;
+}
+
+section.agenda {
+  color: #000005;
+  font-size: 50px;
+  font-weight: bold;
+  padding: 2%;
+}
+
+section.agenda h1 {
+  font-weight: bold;
+  font-size: 100px;
+  color: #003366;
+  position: relative;
+  left: 2%;
+  top: 0%;
+}
+
+section.subtitle h1 {
+  font-weight: bold;
+  color: #050505;
+  font-size: 100px;
+  padding: 50px;
+}
+
+section.subtitle h2 {
+  font-weight: bold;
+  color: #050505;
+  font-size: 70px;
+}
+
+section.content {
+  font-size: 50px;
+  font-weight: bold;
+  /* padding: 2%; */
+}
+
+section.content h1 {
+  font-weight: bold;
+  color: #002200;
+  font-size: 70px;
+  position: absolute;
+  top: 50px;
+}
+
+section.epilogue h1 {
+  font-weight: bold;
+  color: #050505;
+  font-size: 100px;
+  padding: 50px;
+}
+
+section.epilogue h2 {
+  font-weight: bold;
+  color: #050505;
+  font-size: 50px;
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
+}
+
+section::after {
+  content: attr(data-marpit-pagination) " / " attr(data-marpit-pagination-total);
+  color: #050505;
+  font-family: "Trenda";
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+/*
+Gruvbox style (light) (c) Pavel Pertsev (original style at https://github.com/morhetz/gruvbox)
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #fbf1c7;
+}
+
+.hljs,
+.hljs-subst {
+  color: #3c3836;
+}
+
+/* Gruvbox Red */
+.hljs-deletion,
+.hljs-formula,
+.hljs-keyword,
+.hljs-link,
+.hljs-selector-tag {
+  color: #9d0006;
+}
+
+/* Gruvbox Blue */
+.hljs-built_in,
+.hljs-emphasis,
+.hljs-name,
+.hljs-quote,
+.hljs-strong,
+.hljs-title,
+.hljs-variable {
+  color: #076678;
+}
+
+/* Gruvbox Yellow */
+.hljs-attr,
+.hljs-params,
+.hljs-template-tag,
+.hljs-type {
+  color: #b57614;
+}
+
+/* Gruvbox Purple */
+.hljs-builtin-name,
+.hljs-doctag,
+.hljs-literal,
+.hljs-number {
+  color: #8f3f71;
+}
+
+/* Gruvbox Orange */
+.hljs-code,
+.hljs-meta,
+.hljs-regexp,
+.hljs-selector-id,
+.hljs-template-variable {
+  color: #af3a03;
+}
+
+/* Gruvbox Green */
+.hljs-addition,
+.hljs-meta-string,
+.hljs-section,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-string,
+.hljs-symbol {
+  color: #79740e;
+}
+
+/* Gruvbox Aqua */
+.hljs-attribute,
+.hljs-bullet,
+.hljs-class,
+.hljs-function,
+.hljs-function .hljs-keyword,
+.hljs-meta-keyword,
+.hljs-selector-pseudo,
+.hljs-tag {
+  color: #427b58;
+}
+
+/* Gruvbox Gray */
+.hljs-comment {
+  color: #928374;
+}
+
+/* Gruvbox Purple */
+.hljs-link_label,
+.hljs-literal,
+.hljs-number {
+  color: #8f3f71;
+}
+
+.hljs-comment,
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-section,
+.hljs-strong,
+.hljs-tag {
+  font-weight: bold;
+}

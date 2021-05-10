@@ -1,0 +1,11 @@
+{
+  "name": "techtalk-2021-05",
+  "version": "0.9.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:pdf && npm run build:pptx",
+    "build:pdf": "marp --pdf --allow-local-files --output ../../out/ -I ./",
+    "build:pptx": "marp --pptx --allow-local-files --output ../../out/ -I ./"
+  },
+  "license": "MIT"
+}
