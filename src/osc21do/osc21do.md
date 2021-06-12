@@ -2,13 +2,10 @@
 marp: true
 theme: osc21do
 paginate: true
-backgroundImage: url("../../images/12-pond.jpg")
 ---
 
 <!-- _class: title-->
 <!-- _paginate: false -->
-
-![bg](../../images/title.png)
 
 # Pythonではじめる今風な型プログラミング
 
@@ -18,9 +15,9 @@ backgroundImage: url("../../images/12-pond.jpg")
 
 <!-- _class: agenda -->
 
-![bg opacity:0.8 blur:5px](../../images/04-breeze.jpg)
-
 # 今日話すこと
+
+hoge
 
 1. 型ヒント入門編: 小さく始める
     1. 関数の戻り値・引数
@@ -49,8 +46,6 @@ backgroundImage: url("../../images/12-pond.jpg")
 <!-- _class: subtitle -->
 <!-- _paginate: false -->
 
-![bg opacity:0.5 brightness:0.8](../../images/4.jpg)
-
 # 型ヒント入門編: 小さく始める
 
 ---
@@ -58,15 +53,11 @@ backgroundImage: url("../../images/12-pond.jpg")
 <!-- _class: subtitle -->
 <!-- _paginate: false -->
 
-![bg opacity:0.5 brightness:0.8](../../images/4.jpg)
-
 # 少し発展編: typingモジュール
 
 ---
 
 <!-- _class: subtitle -->
 <!-- _paginate: false -->
-
-![bg opacity:0.5 brightness:0.8](../../images/4.jpg)
 
 # 最近のアップデート・新機能を以前のバージョンでも使うには

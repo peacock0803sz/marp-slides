@@ -1,10 +1,15 @@
-/* @theme osc21do */
-@import "default";
+/* @theme osc21do
+ * @auto-scaling true
+ */
+
+@import "base";
 
 :root {
-  font-family: "Trenda", "Uビュー R", "Noto Sans CJK JP";
-  width: 1980px;
+  font-family: "Raleway Thin", "Uビュー R", "Noto Sans CJK JP";
+  width: 1920px;
   height: 1080px;
+  background-color: #fbc821;
+  color: #111111;
 }
 
 a {
@@ -14,100 +19,80 @@ a {
 pre code {
   font-family: "Ricty Diminished Discord";
   font-weight: bold;
-  color: #111;
-  background-color: #eee;
 }
 
 pre code {
   font-family: "Ricty Diminished Discord";
-  color: #111;
-  background-color: #eee;
 }
 
 section.title {
   text-align: right;
+  background-image: url("./images/scribleアートボード\ 1.png");
 }
 
 section.title h1 {
-  color: #020;
-  font-family: "Trenda", "Uビュー R", "Noto Sans CJK JP";
   font-weight: bold;
-  font-size: 150px;
+  font-size: 130px;
+  text-align: left;
   position: absolute;
-  right: 50px;
-  bottom: 100px;
+  right: 200px;
+  left: 200px;
+  bottom: 250px;
 }
-
 section.title h2 {
-  color: #002200;
-  font-size: 75px;
-  position: absolute;
-  right: 50px;
-  bottom: 0px;
-}
-
-section.agenda {
-  color: #000005;
+  font-weight: bold;
   font-size: 50px;
-  font-weight: bold;
-  padding: 2%;
-}
-
-section.agenda h1 {
-  font-weight: bold;
-  font-size: 100px;
-  color: #003366;
-  position: relative;
-  left: 2%;
-  top: 0%;
-}
-
-section.subtitle h1 {
-  font-weight: bold;
-  color: #050505;
-  font-size: 100px;
-  padding: 50px;
-}
-
-section.subtitle h2 {
-  font-weight: bold;
-  color: #050505;
-  font-size: 70px;
-}
-
-section.content {
-  font-size: 50px;
-  font-weight: bold;
-  /* padding: 2%; */
-}
-
-section.content h1 {
-  font-weight: bold;
-  color: #002200;
-  font-size: 70px;
+  text-align: left;
   position: absolute;
+  right: 250px;
+  left: 250px;
   top: 50px;
 }
 
-section.epilogue h1 {
+section.subtitle {
+  background-image: url("./images/scribleアートボード\ 4.png");
+}
+section.subtitle h1 {
   font-weight: bold;
-  color: #050505;
   font-size: 100px;
-  padding: 50px;
+  text-align: left;
+  position: absolute;
+  right: 150px;
+  left: 150px;
+  bottom: 400px;
 }
 
-section.epilogue h2 {
+svg[data-marpit-svg].agenda {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+section.agenda {
+  background-image: url("./images/scribleアートボード\ 4.png");
+}
+section.agenda h1 {
   font-weight: bold;
-  color: #050505;
-  font-size: 50px;
+  font-size: 80px;
+  text-align: left;
   position: absolute;
-  bottom: 10px;
-  right: 50px;
+  right: 150px;
+  left: 150px;
+  top: 20px;
+}
+section.agenda p,
+ol {
+  font-weight: 500;
+  font-size: 50px;
+  text-align: left;
+  padding-left: 50px;
+  position: relative;
+  top: 50px;
+  left: 50px;
 }
 
 section::after {
   content: attr(data-marpit-pagination) " / " attr(data-marpit-pagination-total);
-  color: #050505;
   font-family: "Trenda";
   font-weight: bolder;
   font-size: 40px;
