@@ -5,9 +5,7 @@
   "repository": "https://github.com/peacock0803sz/slides.git",
   "private": true,
   "workspaces": {
-    "packages": [
-      "src/*"
-    ]
+    "packages": ["*"]
   },
   "license": "MIT",
   "devDependencies": {
