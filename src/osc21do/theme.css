@@ -3,8 +3,18 @@
 
 :root {
   font-family: "Trenda", "Uビュー R", "Noto Sans CJK JP";
-  width: 1980px;
+  width: 1920px;
   height: 1080px;
+  background-color: #febb11;
+  color: #111;
+}
+
+h1 {
+  color: #111;
+}
+
+table {
+  background-color: #febb11;
 }
 
 a {
@@ -15,7 +25,6 @@ pre code {
   font-family: "Ricty Diminished Discord";
   font-weight: bold;
   color: #111;
-  background-color: #eee;
 }
 
 pre code {
@@ -25,21 +34,20 @@ pre code {
 }
 
 section.title {
+  background-image: url("./images/scribleアートボード\ 1.png");
   text-align: right;
 }
 
 section.title h1 {
-  color: #020;
   font-family: "Trenda", "Uビュー R", "Noto Sans CJK JP";
   font-weight: bold;
   font-size: 150px;
   position: absolute;
-  right: 50px;
-  bottom: 100px;
+  right: 150px;
+  bottom: 250px;
 }
 
 section.title h2 {
-  color: #002200;
   font-size: 75px;
   position: absolute;
   right: 50px;
@@ -47,7 +55,7 @@ section.title h2 {
 }
 
 section.agenda {
-  color: #000005;
+  background-image: url("./images/scribleアートボード\ 4.png");
   font-size: 50px;
   font-weight: bold;
   padding: 2%;
@@ -56,34 +64,41 @@ section.agenda {
 section.agenda h1 {
   font-weight: bold;
   font-size: 100px;
-  color: #003366;
   position: relative;
   left: 2%;
   top: 0%;
 }
 
+section.subtitle {
+  background-image: url("./images/scribleアートボード\ 2.png");
+}
+
 section.subtitle h1 {
   font-weight: bold;
-  color: #050505;
   font-size: 100px;
   padding: 50px;
+  position: absolute;
+  left: 50px;
+  top: 250px;
 }
 
 section.subtitle h2 {
   font-weight: bold;
-  color: #050505;
   font-size: 70px;
+  position: absolute;
+  left: 100px;
+  top: 450px;
 }
 
 section.content {
   font-size: 50px;
   font-weight: bold;
-  /* padding: 2%; */
+  background-image: url("./images/scribleアートボード\ 3.png");
+  padding: 7%;
 }
 
 section.content h1 {
   font-weight: bold;
-  color: #002200;
   font-size: 70px;
   position: absolute;
   top: 50px;
@@ -91,14 +106,12 @@ section.content h1 {
 
 section.epilogue h1 {
   font-weight: bold;
-  color: #050505;
   font-size: 100px;
   padding: 50px;
 }
 
 section.epilogue h2 {
   font-weight: bold;
-  color: #050505;
   font-size: 50px;
   position: absolute;
   bottom: 10px;
@@ -107,7 +120,7 @@ section.epilogue h2 {
 
 section::after {
   content: attr(data-marpit-pagination) " / " attr(data-marpit-pagination-total);
-  color: #050505;
+  color: #111;
   font-family: "Trenda";
   font-weight: bolder;
   font-size: 40px;

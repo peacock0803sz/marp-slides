@@ -5,7 +5,8 @@
   "scripts": {
     "build": "npm run build:pdf && npm run build:pptx",
     "build:pdf": "marp --pdf --allow-local-files --output ../../out/ -I ./",
-    "build:pptx": "marp --pptx --allow-local-files --output ../../out/ -I ./"
+    "build:pptx": "marp --pptx --allow-local-files --output ../../out/ -I ./",
+    "dev": "marp -swp --allow-local-files -I ../../"
   },
   "license": "MIT"
 }
