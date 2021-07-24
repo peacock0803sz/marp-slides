@@ -33,13 +33,16 @@ class: content
 - Thanks for considering timezone!
 - Slide is uploaded [https://speakerdeck.com/peacock0803sz/europython2021](https://speakerdeck.com/peacock0803sz/europython2021)
     - You can see same via QR code
-- Chat(Element): `#Conference 1: Optiver `
+- Chat(Element): `#Conference 1: Optiver`
+- PEP8 styles in the sample code are ignored, due to space limitations
 
 ---
 
 <!-- _class: preface -->
 
 # Self-introduction
+
+![w:500](images/peacock0803sz.jpg)
 
 - Name: Peacock / Yoichi Takai
     - [Twitter](https://twitter.com/peacock0803sz/) / [GitHub](https://github.com/peacock0803sz/) / [Facebook](https://www.facebook.com/peacock0803sz): `peacock0803sz`
@@ -129,7 +132,6 @@ class: content
 - Configures and options of mypy
 - How to use them in CI, ex: GitHub actions, Circle CI and etc...
 - History of type hinting
-- Detail of PEPs
 - Implementation of typing, mypy
 - Abstract Syntax Tree (AST)
 
@@ -173,7 +175,7 @@ class: content
 
 ---
 
-- Until 3.8, it was from `typing`, but now it's distributed.
+- Until 3.8, it was from `typing`, but now it's depericated.
 - For `__builtins__` start with lowercase without doing anything.
     - Such as `list`, `tuple`, and `dict` etc...
 
@@ -194,6 +196,14 @@ class: content
 - It's a good idea to look at the methods used in your functions.
     - Choose the types on the left side of this diagram as much as possible.
 
+---
+
+# (Deprecated since 3.9) import from typing module
+
+- For Generics, until 3.9, you had to write `from typing import ...`
+    - Collection, protocol related, etc.
+- From 3.9, it's deprecated because of the way of writing described before.
+- However, there are some exceptions such as Any and Optional.
 
 ---
 
@@ -227,15 +237,6 @@ unknown_variable: Any
 
 ---
 
-# (deprecated since 3.9) import from typing module
-
-- For Generics, until 3.9, you had to write `from typing import ...`
-    - Collection, protocol related, etc.
-- From 3.9, it's deprecated because of the way of writing described below.
-- However, there are some exceptions such as Any and Optional.
-
----
-
 <!-- _class: subtitle -->
 
 # A little more advanced: Generics type
@@ -253,15 +254,13 @@ def square(number: int | float) -> int | float:
     return number ** 2
 ```
 
+Union objects can be tested for equality with other union objects
+
 ```py
-# Unions of unions are flattened:
-(int | str) | float == int | str | float
-# Redundant types are removed:
-int | str | int == int | str
-# When comparing unions, the order is ignored:
-int | str == str | int
-# It is compatible with typing.Union:
-int | str == typing.Union[int, str]
+(int | str) | float == int | str | float  # Unions of unions are flattened:
+int | str | int == int | str  # Redundant types are removed
+int | str == str | int  # the order is ignored
+int | str == typing.Union[int, str]  # Compatible with typing.Union
 ```
 
 ---
@@ -331,6 +330,30 @@ def validate(func: Callable) -> Callable[... , Callable | tuple[Response, Litera
 
 ---
 
+# User-defined Generic types
+
+A generic type is typically declared by inheriting from an instantiation
+
+Example: a generic mapping type
+
+```py
+from typing import TypeVar, Generic
+KT, VT = TypeVar("KT"), TypeVar("VT")
+class Mapping(Generic[KT, VT]):
+    def __getitem__(self, key: KT) -> VT: pass
+```
+
+This class can then be used as:
+
+```py
+X, Y = TypeVar("X"), TypeVar("Y")
+def lookup_name(mapping: Mapping[X, Y], key: X, default: Y) -> Y:
+    try: return mapping[key]
+    except KeyError: return default
+```
+
+---
+
 <!-- _class: subtitle -->
 
 # How to use recent updates/new features in previous versions
@@ -341,12 +364,13 @@ def validate(func: Callable) -> Callable[... , Callable | tuple[Response, Litera
 
 https://www.python.org/downloads/
 
-| version | status   | release    | EOS        | PEP |
-| ------- | -------- | ---------- | ---------- | --- |
-|     3.9 | bug fix  | 2020-10-05 | 2025-10    | 596 |
-|     3.8 | bug fix  | 2019-10-14 | 2024-10    | 569 |
-|     3.7 | Security | 2018-06-27 | 2023-06-27 | 537 |
-|     3.6 | Security | 2016-12-23 | 2021-12-23 | 494 |
+| version | status   | release    | EOS        | PEP                                              |
+| ------- | -------- | ---------- | ---------- | ------------------------------------------------ |
+|    3.10 | beta 4   | 2021-10-04 | 2025-10    | [619](https://www.python.org/dev/peps/pep-0619/) |
+|     3.9 | bug fix  | 2020-10-05 | 2025-10    | [596](https://www.python.org/dev/peps/pep-0596/) |
+|     3.8 | bug fix  | 2019-10-14 | 2024-10    | [569](https://www.python.org/dev/peps/pep-0659/) |
+|     3.7 | Security | 2018-06-27 | 2023-06-27 | [537](https://www.python.org/dev/peps/pep-0537/) |
+|     3.6 | Security | 2016-12-23 | 2021-12-23 | [373](https://www.python.org/dev/peps/pep-0373/) |
 
 ---
 
@@ -378,6 +402,8 @@ https://www.python.org/downloads/
 ---
 
 # PEP 612: Parameter Specification Variables
+
+**THIS TOPIC IS DIFFICULT!!!**
 
 ## Motivation
 
@@ -413,6 +439,8 @@ def foo(x: int, y: str) -> int: return x + 7
 ---
 
 # PEP 613: TypeAlias
+
+**THIS TOPIC IS DIFFICULT!!!**
 
 ## Motivation
 - We consider global variables without type hints to be type aliases.
@@ -481,13 +509,22 @@ However, that will not work as intended if the user function is used.
 
 # Summary
 
-- Let's start writing a type hint from the function definition.
-- Python 3.10 style type hinting
-    - Standard collection type hints starting with lowercase (3.9)
-    - Union type operator `|` (3.10)
-    - Parameter Specific Variables (3.10)
-    - Explicit Type Aliases (3.10)
-- Designing with types in mind is recommended for a better overall perspective
+1. Let's start writing a type hint from the function definition.
+2. Collections and Generics
+    1. Standard collection type hints starting with lowercase (3.9)
+3. Python 3.10 style type hinting
+    1. Union operator `|`, Parameter Specific Variables, Explicit Type Aliases
+
+---
+
+# Pages I used for reference
+
+- https://docs.python.org/3/library/typing.html
+- https://docs.python.org/3.10/whatsnew/3.10.html
+- https://future-architect.github.io/articles/20201223 (ja)
+- https://qiita.com/tk0miya/items/931da13af292060356b9 (ja)
+- https://qiita.com/tk0miya/items/1b093c2eee7668fffb62 (ja)
+- https://qiita.com/tk0miya/items/a27191f5d627601930ed (ja)
 
 ---
 

@@ -101,14 +101,14 @@ It is a good idea to look at the methods used in your functions and choose the t
 
 For example, if you just want to loop over a sequence of arguments in a function, you can use collections.abc.Iterable. Iterable. If you need random access, use Sequence. If you need to change the value, use a type with Mutable.
 
-For example, if you simply specify list as the argument type, you will not be able to pass set or dict. In particular, it is better not to set concrete types (list, tuple, dictionary, set) just because you are familiar with them. However, I think it is easier to understand using these concrete types, so you may want to try applying these concrete types first, and after you confirm that you can use fewer operators and methods, you may want to gradually move to the left side of the types.
+Or, if you simply specify list as the argument type, you will not be able to pass set or dict. In particular, it is better not to set concrete types (list, tuple, dictionary, set) just because you are familiar with them. However, I think it is easier to understand using these concrete types, so you may want to try applying these concrete types first, and after you confirm that you can use fewer operators and methods, you may want to gradually move to the left side of the types.
 
 ---
 
 # any
 
 It is strictly forbidden to abuse, but it can be used like this
-
+it's very evil!!!
 
 ---
 
@@ -121,7 +121,14 @@ Next, there are few advaced types.
 # Union (Mager type)
 
 at first is union, merged type.
-this is an Example A function that accepts both integers and float
+top half code is an Example A function that accepts both integers and float
+bottom one is Union objects can be tested for equality with other union objects.
+
+---
+
+# User-defined Generic types
+
+A generic type is typically declared by inheriting from an instantiation of this class with one or more type variables.
 
 ---
 
