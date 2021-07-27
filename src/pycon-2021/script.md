@@ -86,7 +86,6 @@ First, let's take a look at the simplest type.
 
 # Using different types of collections
 
-
 There are many types in `collections.abc.` 
 
 Although it's unlikely that you will use these in a fine-grained way, It's better to choose a collection with as few  methods as possible to increase portability.

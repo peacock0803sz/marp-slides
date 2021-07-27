@@ -46,60 +46,12 @@ class: content
 
 - Name: Peacock / Yoichi Takai
     - [Twitter](https://twitter.com/peacock0803sz/) / [GitHub](https://github.com/peacock0803sz/) / [Facebook](https://www.facebook.com/peacock0803sz): `peacock0803sz`
-- Company: [CMScom. Inc.](https://cmscom.jp) (since 2019/09 ~)
+- Company: [CMScom](https://cmscom.jp) (since 2019/09 ~)
 - Activites about [PyCon JP Association](https://www.pycon.jp)
     - Staff of PyCon JP [2020](https://pycon.jp/2020), [2021](https://2021.pycon.jp)
     - [PyCon JP TV](https://tv.pycon.jp)'s director
         - YouTube live about PyCons and local events
         - Held once a month
-
----
-
-<!-- _class: subtitle -->
-
-# Introducing and promotion from PyCon JP
-
----
-
-<!-- _class: pyconjp2020-cheers -->
-
-# PyCon JP 2020 was held in online!
-
-![h:850px](https://live.staticflickr.com/65535/50340450898_e3a70e6f45_3k.jpg)
-
----
-
-<!-- _class: content -->
-
-# :mega: Announces about PyCon JP 2021 (1/2)
-
-- Website: https://2021.pycon.jp/
-- Blog: https://pyconjp.blogspot.com/
-- Twitter: [@pyconjapan](https://twitter.com/pyconjapan)
-- Date(conference day): 10/15(Fri), 16(Sat)
-    - Sprint and Training is not determined
-    - Now, CfP is over
-    - In the process of review and adoption
-
----
-
-<!-- _class: content -->
-
-# :mega: Announces about PyCon JP 2021 (2/2)
-
-- Venue: Online or Hybrid:
-    - On-site venue is Bellesalle Kanda, Tokyo
-    - Working on a way to hold it in a hybrid
-- Call for sponsors (second) is opened: [Blog post](https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html)
-- For the latest information, check our blog and Twitter
-- Share this slide page with other Pythonistas around you!
-
-
----
-
-<!-- _class: subtitle -->
-
-# Let's start the main content
 
 ---
 
@@ -148,10 +100,21 @@ class: content
 
 - It knows the type when you reference it in the editor.
 - It gets angry when I try to give it the wrong one.
+- The completion will work when accessing the return value of a function using dot.
 
-![h:250px](images/CleanShot%202021-06-12%20at%2014.37.59.png)
-![h:200px](images/CleanShot%202021-06-12%20at%2015.41.54.png)
+---
 
+# In code review
+
+Reviewer can know variables or function returns types
+
+---
+
+# Without typing
+
+---
+
+# With typing
 
 ---
 
@@ -160,6 +123,10 @@ class: content
 - `bool`, `bytes`, `float`, `int`, `str`
     - you don't need to do anything to use them.
 - `None`: used for functions that return nothing.
+
+---
+
+# Let's start with function definitions
 
 ---
 
@@ -205,9 +172,13 @@ class: content
 - From 3.9, it's deprecated because of the way of writing described before.
 - However, there are some exceptions such as Any and Optional.
 
+## todo: examples
+
 ---
 
 <!-- _class: full-img -->
+
+# Great inheritance tree
 
 ![h:1080](images/collections-8.jpg)
 
@@ -223,7 +194,7 @@ class: content
 
 ---
 
-# from typing import Any
+# Escape: from typing import Any
 
 - Can hold instances of any type.
 - It's better not to use it.
@@ -257,10 +228,10 @@ def square(number: int | float) -> int | float:
 Union objects can be tested for equality with other union objects
 
 ```py
-(int | str) | float == int | str | float  # Unions of unions are flattened:
-int | str | int == int | str  # Redundant types are removed
-int | str == str | int  # the order is ignored
-int | str == typing.Union[int, str]  # Compatible with typing.Union
+(int | str) | float == int | str | float  # Unions of unions are flattened
+int | str | int == int |                  # Redundant types are removed
+int | str == str | int                    # the order is ignored
+int | str == typing.Union[int, str]       # Compatible with typing.Union
 ```
 
 ---
@@ -356,7 +327,48 @@ def lookup_name(mapping: Mapping[X, Y], key: X, default: Y) -> Y:
 
 <!-- _class: subtitle -->
 
-# How to use recent updates/new features in previous versions
+# Introducing and promotion from PyCon JP
+
+---
+
+<!-- _class: pyconjp2020-cheers -->
+
+# PyCon JP 2020 was held in online!
+
+![h:850px](https://live.staticflickr.com/65535/50340450898_e3a70e6f45_3k.jpg)
+
+---
+
+<!-- _class: content -->
+
+# :mega: Announces about PyCon JP 2021 (1/2)
+
+- Website: https://2021.pycon.jp/
+- Blog: https://pyconjp.blogspot.com/
+- Twitter: [@pyconjapan](https://twitter.com/pyconjapan)
+- Date(conference day): 10/15(Fri), 16(Sat)
+    - Sprint and Training is not determined
+    - Now, CfP is over
+    - In the process of review and adoption
+
+---
+
+<!-- _class: content -->
+
+# :mega: Announces about PyCon JP 2021 (2/2)
+
+- Venue: Online or Hybrid:
+    - On-site venue is Bellesalle Kanda, Tokyo
+    - Working on a way to hold it in a hybrid
+- Call for sponsors (second) is opened: [Blog post](https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html)
+- For the latest information, check our blog and Twitter
+- Share this slide page with other Pythonistas around you!
+
+---
+
+<!-- _class: subtitle -->
+
+# Updates overview & How to use new features in previous versions
 
 ---
 
@@ -364,13 +376,13 @@ def lookup_name(mapping: Mapping[X, Y], key: X, default: Y) -> Y:
 
 https://www.python.org/downloads/
 
-| version | status   | release    | EOS        | PEP                                              |
-| ------- | -------- | ---------- | ---------- | ------------------------------------------------ |
-|    3.10 | beta 4   | 2021-10-04 | 2025-10    | [619](https://www.python.org/dev/peps/pep-0619/) |
-|     3.9 | bug fix  | 2020-10-05 | 2025-10    | [596](https://www.python.org/dev/peps/pep-0596/) |
-|     3.8 | bug fix  | 2019-10-14 | 2024-10    | [569](https://www.python.org/dev/peps/pep-0659/) |
-|     3.7 | Security | 2018-06-27 | 2023-06-27 | [537](https://www.python.org/dev/peps/pep-0537/) |
-|     3.6 | Security | 2016-12-23 | 2021-12-23 | [373](https://www.python.org/dev/peps/pep-0373/) |
+| ver. | status   | release    | EOS        | PEP                                              | main new feture          |
+| ---- | -------- | ---------- | ---------- | ------------------------------------------------ | ------------------------ |
+| 3.10 | beta 4   | 2021-10-04 | 2025-10    | [619](https://www.python.org/dev/peps/pep-0619/) | Pattern matching         |
+|  3.9 | bug fix  | 2020-10-05 | 2025-10    | [596](https://www.python.org/dev/peps/pep-0596/) | Union operators to dict  |
+|  3.8 | security | 2019-10-14 | 2024-10    | [569](https://www.python.org/dev/peps/pep-0569/) | `=` in f-string          |
+|  3.7 | Security | 2018-06-27 | 2023-06-27 | [537](https://www.python.org/dev/peps/pep-0537/) | Data classes             |
+|  3.6 | Security | 2016-12-23 | 2021-12-23 | [494](https://www.python.org/dev/peps/pep-0494/) | Literal string (f-string) |
 
 ---
 
@@ -395,9 +407,10 @@ https://www.python.org/downloads/
 - The aforementioned union type can be used as an operator.
 - You can also use it when asking `isinstance()`.
 - More intuitive, since TypeScipt and others use this notation.
-- Other typing-related new features in 3.10 are too complex to introduce here.
-    - Argument spec variables, explicit type aliases, user-defined type guards
-    - See also: [What's New In Python 3.10](https://docs.python.org/3.10/whatsnew/3.10.html#new-features-related-to-type-hints)
+
+```py
+int | str == typing.Union[int, str]  # Compatible with typing.Union
+```
 
 ---
 
@@ -440,8 +453,6 @@ def foo(x: int, y: str) -> int: return x + 7
 
 # PEP 613: TypeAlias
 
-**THIS TOPIC IS DIFFICULT!!!**
-
 ## Motivation
 - We consider global variables without type hints to be type aliases.
     - This tends to cause problems with forward references, scoping, etc.
@@ -451,7 +462,8 @@ def foo(x: int, y: str) -> int: return x + 7
 ---
 
 ## Approach
-- Add a new typing.TypeAlias
+
+- Add a new `typing.TypeAlias`
     - Write a variable of type alias type like `T: TypeAlias = int`
 - Variables defined at the global level are considered type aliases.
 - Using ForwardReference, you can write `T: TypeAlias = "int"`.
@@ -497,7 +509,7 @@ However, that will not work as intended if the user function is used.
     return all(isinstance(x, str) for x in val)
 
   def func1(val: List[object]):
-    if is_str_list(val): print(" ".join(val)) # Error: invalid type
+    if is_str_list(val): print(" ".join(val))  # Error: invalid type
 ```
 
 - `TypeGuard` allows you to define user-defined type guards via the new typing.
@@ -521,6 +533,7 @@ However, that will not work as intended if the user function is used.
 
 - https://docs.python.org/3/library/typing.html
 - https://docs.python.org/3.10/whatsnew/3.10.html
+- http://mypy-lang.org
 - https://future-architect.github.io/articles/20201223 (ja)
 - https://qiita.com/tk0miya/items/931da13af292060356b9 (ja)
 - https://qiita.com/tk0miya/items/1b093c2eee7668fffb62 (ja)
