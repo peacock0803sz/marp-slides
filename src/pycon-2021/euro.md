@@ -343,6 +343,8 @@ def lookup_name(mapping: Mapping[X, Y], key: X, default: Y) -> Y:
 
 # :mega: Announces about PyCon JP 2021 (1/2)
 
+This is the largest Python Conference in Japan
+
 - Website: https://2021.pycon.jp/
 - Blog: https://pyconjp.blogspot.com/
 - Twitter: [@pyconjapan](https://twitter.com/pyconjapan)
@@ -359,8 +361,9 @@ def lookup_name(mapping: Mapping[X, Y], key: X, default: Y) -> Y:
 
 - Venue: Online or Hybrid:
     - On-site venue is Bellesalle Kanda, Tokyo
+        - 10/15 afternoon only
     - Working on a way to hold it in a hybrid
-- Call for sponsors (second) is opened: [Blog post](https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html)
+- Sponsors application (second) is opened: [Blog post](https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html)
 - For the latest information, check our blog and Twitter
 - Share this slide page with other Pythonistas around you!
 
