@@ -124,13 +124,14 @@ section.preface img {
 }
 
 section.full-img {
-  font-size: 50px;
   background-image: url("./images/scribleアートボード\ 3.png");
-  padding: 7%;
+}
+section.full-img h1 {
+  font-weight: bold;
+  font-size: 80px;
 }
 section.full-img img {
   align-items: center;
-  height: fit-content;
 }
 
 section.pyconjp2020-cheers {

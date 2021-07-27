@@ -12,21 +12,26 @@ class: content
 
 ## Peacock (Yoichi Takai), at EuroPython 2021
 
+<!-- Hi, let's start. my talk title is ...-->
+
 ---
 
 <!-- _class: subtitle -->
 
 # Preface: before the main topic...
 
-## Self-introduction, What about I belong to
+## Self-introduction, today's agenda
 
 ---
 
 <!-- _class: preface -->
 
+<!-- Nice to meet you... -->
+<!-- If you have any questions or comments, please write here. I'd love to hear from you during the talk. -->
+
 # Hello EuroPython!
 
-![w:500](./images/QR%20Code%20de11d3e4-7b26-4166-b24a-b66013c5bb02.png)
+![w:430](images/QR%20Code%20de11d3e4-7b26-4166-b24a-b66013c5bb02.png)
 
 - Nice to meet you, Please call me **Peacock**
 - I'm Attending from Japan, now it's 17:30 in JST
@@ -40,33 +45,42 @@ class: content
 
 <!-- _class: preface -->
 
+<!-- let me to introduce myself. -->
+<!-- In addition to my work, I'm also involved in the PyCon JP Association -->
+
 # Self-introduction
 
-![w:500](images/peacock0803sz.jpg)
+![w:430](images/peacock0803sz.jpg)
 
 - Name: Peacock / Yoichi Takai
     - [Twitter](https://twitter.com/peacock0803sz/) / [GitHub](https://github.com/peacock0803sz/) / [Facebook](https://www.facebook.com/peacock0803sz): `peacock0803sz`
 - Company: [CMScom](https://cmscom.jp) (since 2019/09 ~)
-- Activites about [PyCon JP Association](https://www.pycon.jp)
+    - We're the only company in Japan that uses Plone
+- [PyCon JP Association](https://www.pycon.jp)'s contributing member
     - Staff of PyCon JP [2020](https://pycon.jp/2020), [2021](https://2021.pycon.jp)
     - [PyCon JP TV](https://tv.pycon.jp)'s director
-        - YouTube live about PyCons and local events
-        - Held once a month
+        - YouTube live about PyCons and local events held once a month
 
 ---
 
 <!-- _class: agenda -->
 
+<!-- this is today's topic. -->
+
 # Today's topic
 
 1. Why I talk about typing?
-2. Introduction of typing, How to write basically
-3. Generics, User-Defined types
-    1. Best practice included
+2. Introduction of typing, How to write basically **(Most important)**
+3. Generics, User-Defined types (Best practice included)
 4. Backward compatibility for 3.9 or before
 5. Updates overview on 3.10
 
 ---
+
+<!-- _class: agenda -->
+
+<!-- My motivation for talking is to get the word out in a coherent way. -->
+<!-- It's been five years (Python 3.5, at 2015) since typing appeared -->
 
 # Why I talk about typing?
 
@@ -77,6 +91,8 @@ class: content
 	- Because there is little coherent information
 
 ---
+
+<!-- _class: agenda -->
 
 # I will not talk about
 
@@ -91,10 +107,14 @@ class: content
 
 <!-- _class: subtitle -->
 
+<!-- OK, Let's take a look at how to actually start Typing! -->
+
 # Introduction of typing
 ## How to write basically
 
 ---
+
+<!-- First, let's look at what typing can do for you. -->
 
 # What makes you happy?
 
@@ -104,29 +124,101 @@ class: content
 
 ---
 
+<!-- this is a minimal example. -->
+<!-- we don't know the type of return value... -->
+<!-- if try to pass int to the function, it'll occur an error -->
+
+## Without the type hint
+
+![h:500px](images/CleanShot%202021-07-27%20at%2021.29.16@2x.png)
+
+---
+
+<!-- How about this case? It looks like s is str, a return value is also str.-->
+
+## With the type hint
+
+![h:400px](images/CleanShot%202021-07-27%20at%2021.30.00@2x.png)
+
+<!-- and, the editor can tell the argument is wrong -->
+
+## Editor tells a wrong argument
+
+![h:300px](images/CleanShot%202021-07-27%20at%2021.41.30@2x.png)
+
+---
+
+<!-- and more, there are advantages in code review. -->
+
 # In code review
 
-Reviewer can know variables or function returns types
+Reviewer can know variables or function returns types.
+
+<!-- w/o type hint, reviewer can't know the return type from reading the definition. -->
+<!-- As a result, many people may have had this experience. -->
+
+## Without the type hint
+
+Boss < What type does this function return?
+You < Humm... str or False or None ...?
+Boss < THAT'S TOO MANY TYPES!
+You < :-(
+
+```py
+def need_new_post():
+    if ...: retrun None
+    elif ...: retrun False
+    else: return post_id  # this is str
+```
 
 ---
 
-# Without typing
+<!-- However, Type hint may make review process more smooth. -->
+
+## With the type hint
+
+Boss < It looks like this function may retruns 3 types... Isn't that too much?
+You < I see. That could be a bad design. Let me fix it.
+Boss < Sure, please.
+
+```py
+def need_new_post() -> None | False | str:
+    if ...: retrun None
+    elif ...: retrun False
+    else: return post_id  # this is str
+```
 
 ---
 
-# With typing
+# Let's start with function definitions
+
+- After the arguments, write colon and type
+- Before the colon at the end of the function definition, write arrow and type
+
+![h:400px](images/CleanShot%202021-07-27%20at%2021.30.00@2x.png)
 
 ---
 
-# Built-in types
+## Using built-in types
+
+<!-- now, Let's take a look at the types that can be used in practice. -->
 
 - `bool`, `bytes`, `float`, `int`, `str`
     - you don't need to do anything to use them.
 - `None`: used for functions that return nothing.
 
----
+## Escaping from type pazzles
 
-# Let's start with function definitions
+<!-- If you want to escape from hard type pazzle, you can use any. this is the final resort. -->
+
+- `Any` Can hold instances of any type.
+- It's better not to use it.
+    - Import and use from `typing` when necessary.
+
+```py
+from typing import Any
+unknown_variable: Any
+```
 
 ---
 
@@ -137,7 +229,6 @@ Reviewer can know variables or function returns types
         - 3.9 and later only
         - 3.7, 3.8 write `from __future__ import annotaions` (see below)
         - 3.6: import annotations starting with uppercase letters from `typing` (next section)
-    - ex: `list[str]`, `dict[str, int]`.
     - ref: [official documentation (English)](https://docs.python.org/3.9/whatsnew/3.9.html#type-hinting-generics-in-standard-collections)
 
 ---
@@ -153,7 +244,32 @@ Reviewer can know variables or function returns types
 
 ---
 
+# (Deprecated since 3.9) import from typing module
+
+- For Generics, until 3.9, you had to write `from typing import ...`
+    - Such as `Dict`, `List` and `Tuple` etc...
+- From 3.9, it's deprecated.
+
+<!-- because of the way of writing described before. -->
+
+```py
+from typing import Dict, List, Tuple, ...  # before 3.9
+def some_function() -> Tuple[List[int], Dict[str, bool]]: pass
+```
+
+Since 3.9, no more need these import statement!
+```py
+def some_function() -> tuple[list[int], dict[str, bool]]: pass
+```
+
+---
+
 # Using different types of collections
+
+<!-- There are many types in `collections.abc.`  -->
+<!-- Although it's unlikely that you will use these in a fine-grained way, It's better to choose a collection with as few  methods as possible to increase portability. -->
+<!-- The following figure shows the relationship between `collections.abc` and a sequence of built-in types defined by method inclusion rather than implementation inheritance.  -->
+<!-- It is a good idea to look at the methods used in your functions and choose the types on the left side of this diagram as much as possible. -->
 
 - There are many types in `collections.abc`.
 - It's better to use a collection with as few methods to increase portability.
@@ -165,22 +281,18 @@ Reviewer can know variables or function returns types
 
 ---
 
-# (Deprecated since 3.9) import from typing module
-
-- For Generics, until 3.9, you had to write `from typing import ...`
-    - Collection, protocol related, etc.
-- From 3.9, it's deprecated because of the way of writing described before.
-- However, there are some exceptions such as Any and Optional.
-
-## todo: examples
-
----
-
 <!-- _class: full-img -->
 
-# Great inheritance tree
+# Great method inheritance tree
 
-![h:1080](images/collections-8.jpg)
+<!-- The further to the left you go, the fewer methods it has. -->
+<!-- To the right, the more methods it has. -->
+
+<!-- For example, if you just want to loop over a sequence of arguments in a function, you can use collections.abc.Iterable. Iterable. If you need random access, use Sequence. If you need to change the value, use a type with Mutable. -->
+
+<!-- Or, if you simply specify list as the argument type, you will not be able to pass set or dict. In particular, it is better not to set concrete types (list, tuple, dictionary, set) just because you are familiar with them. However, I think it is easier to understand using these concrete types, so you may want to try applying these concrete types first, and after you confirm that you can use fewer operators and methods, you may want to gradually move to the left side of the types. -->
+
+![h:900px](images/collections-8.jpg)
 
 ---
 
@@ -194,25 +306,15 @@ Reviewer can know variables or function returns types
 
 ---
 
-# Escape: from typing import Any
-
-- Can hold instances of any type.
-- It's better not to use it.
-    - Import and use from `typing` when necessary.
-
-```py
-from typing import Any
-
-unknown_variable: Any
-```
-
----
-
 <!-- _class: subtitle -->
 
 # A little more advanced: Generics type
 
+<!-- Next, there are few advaced types. -->
+
 ---
+
+<!-- at first is union, merged type. top half code is an Example A function that accepts both integers and float bottom one is Union objects can be tested for equality with other union objects. -->
 
 # Union (Mager type)
 
@@ -235,6 +337,8 @@ int | str == typing.Union[int, str]       # Compatible with typing.Union
 ```
 
 ---
+
+<!-- A generic type is typically declared by inheriting from an instantiation of this class with one or more type variables. -->
 
 # Optional type
 
@@ -301,6 +405,8 @@ def validate(func: Callable) -> Callable[... , Callable | tuple[Response, Litera
 
 ---
 
+<!-- A generic type is typically declared by inheriting from an instantiation of this class with one or more type variables. -->
+
 # User-defined Generic types
 
 A generic type is typically declared by inheriting from an instantiation
@@ -327,11 +433,15 @@ def lookup_name(mapping: Mapping[X, Y], key: X, default: Y) -> Y:
 
 <!-- _class: subtitle -->
 
+<!-- Let me give you one more promotion about PyCon JP 2021 -->
+
 # Introducing and promotion from PyCon JP
 
 ---
 
 <!-- _class: pyconjp2020-cheers -->
+
+<!-- PyCon JP 2020 was held online. The photo is from the toast of the party. -->
 
 # PyCon JP 2020 was held in online!
 
@@ -340,6 +450,11 @@ def lookup_name(mapping: Mapping[X, Y], key: X, default: Y) -> Y:
 ---
 
 <!-- _class: content -->
+
+<!-- there are Website, blog and twitter links. -->
+<!-- The date of the conference is Oct. 15,16. -->
+<!-- We haven't decided what we will do for sprints and training yet. -->
+<!-- Now, CfP is over. We are currently in the process of review and adoption. -->
 
 # :mega: Announces about PyCon JP 2021 (1/2)
 
@@ -354,6 +469,8 @@ This is the largest Python Conference in Japan
     - In the process of review and adoption
 
 ---
+
+<!-- The venue could be both online or hybrid. -->
 
 <!-- _class: content -->
 
@@ -375,6 +492,8 @@ This is the largest Python Conference in Japan
 
 ---
 
+<!-- this is updates overview recently. -->
+
 # Recent Python updates
 
 https://www.python.org/downloads/
@@ -389,6 +508,9 @@ https://www.python.org/downloads/
 
 ---
 
+<!-- Let's talk about dunder future, which has come up many times before. -->
+<!-- Modules and methods with two underscores at either end are pronounced dunder. -->
+
 # What is the `__future__` module: (dunder future)?
 
 - It exists for backward compatibility.
@@ -400,6 +522,8 @@ https://www.python.org/downloads/
 ---
 
 <!-- _class: subtitle -->
+
+<!-- next topic is new features in python3.10, will be released Nov. this year there is a difficult features. I'm not sure I can explain it well either. -->
 
 # New Features Related to Type Hints in 3.10
 
@@ -520,19 +644,23 @@ However, that will not work as intended if the user function is used.
 
 ---
 
-<!-- _class: agenda -->
 
 # Summary
 
-1. Let's start writing a type hint from the function definition.
+1. Introduction
+    1. Let's start writing the type hint
+    2. Built-in types
+    3. Standard collection type hints starting with lowercase (3.9)
 2. Collections and Generics
-    1. Standard collection type hints starting with lowercase (3.9)
+    1. Union, Optional, Callable, User-defined Genrics
 3. Python 3.10 style type hinting
-    1. Union operator `|`, Parameter Specific Variables, Explicit Type Aliases
+    1. New Type Union Operator, Parameter Specific Variables, TypeAlias, User-Defined Type Guards
 
 ---
 
-# Pages I used for reference
+# Pages I used for reference (Thanks)
+
+<!-- There are links that I referenced -->
 
 - https://docs.python.org/3/library/typing.html
 - https://docs.python.org/3.10/whatsnew/3.10.html
