@@ -20,7 +20,7 @@ class: content
 
 # Preface: before the main topic...
 
-## Self-introduction, today's agenda
+## Self-introduction, Table of contents
 
 ---
 
@@ -33,19 +33,19 @@ class: content
 
 ![w:430](images/QR%20Code%20de11d3e4-7b26-4166-b24a-b66013c5bb02.png)
 
-- Nice to meet you, Please call me **Peacock**
+- Nice to meet you. Please call me **Peacock**
 - I'm Attending from Japan, now it's 17:30 in JST
-- Thanks for considering timezone!
+- Thanks for considering the timezone!
 - Slide is uploaded [https://speakerdeck.com/peacock0803sz/europython2021](https://speakerdeck.com/peacock0803sz/europython2021)
-    - You can see same via QR code
+    - You can see the same via QR code
 - Chat(Element): `#Conference 1: Optiver`
-- PEP8 styles in the sample code are ignored, due to space limitations
+- PEP8 styles in the sample code are ignored due to space limitations
 
 ---
 
 <!-- _class: preface -->
 
-<!-- let me to introduce myself. -->
+<!-- let me introduce myself. -->
 <!-- In addition to my work, I'm also involved in the PyCon JP Association -->
 
 # Self-introduction
@@ -69,8 +69,8 @@ class: content
 
 # Today's topic
 
-1. Why I talk about typing?
-2. Introduction of typing, How to write basically **(Most important)**
+1. Why do I talk about typing?
+2. Introduction of typing, How to write basically **(Most significant)**
 3. Generics, User-Defined types (Best practice included)
 4. Backward compatibility for 3.9 or before
 5. Updates overview on 3.10
@@ -82,7 +82,7 @@ class: content
 <!-- My motivation for talking is to get the word out in a coherent way. -->
 <!-- It's been five years (Python 3.5, at 2015) since typing appeared -->
 
-# Why I talk about typing?
+# Why do I talk about typing?
 
 - It's been five years since typing appeared
     - In Python 3.5, at 2015
@@ -120,7 +120,7 @@ class: content
 
 - It knows the type when you reference it in the editor.
 - It gets angry when I try to give it the wrong one.
-- The completion will work when accessing the return value of a function using dot.
+- The completion will work when accessing the return value of a function using a dot.
 
 ---
 
@@ -148,13 +148,13 @@ class: content
 
 ---
 
-<!-- and more, there are advantages in code review. -->
+<!-- and more, there are advantages to code review. -->
 
-# In code review
+# In a code review
 
-Reviewer can know variables or function returns types.
+The reviewer can know variables or function returns types.
 
-<!-- w/o type hint, reviewer can't know the return type from reading the definition. -->
+<!-- w/o type hint, reviewer, can't know the return type from reading the definition. -->
 <!-- As a result, many people may have had this experience. -->
 
 ## Without the type hint
@@ -173,11 +173,11 @@ def need_new_post():
 
 ---
 
-<!-- However, Type hint may make review process more smooth. -->
+<!-- However, Type hint may make the review process more smooth. -->
 
 ## With the type hint
 
-Boss < It looks like this function may retruns 3 types... Isn't that too much?
+Boss < It looks like this function may return 3 types... Isn't that too much?
 You < I see. That could be a bad design. Let me fix it.
 Boss < Sure, please.
 
@@ -193,7 +193,7 @@ def need_new_post() -> None | False | str:
 # Let's start with function definitions
 
 - After the arguments, write colon and type
-- Before the colon at the end of the function definition, write arrow and type
+- Before the colon at the end of the function definition, write an arrow and type
 
 ![h:400px](images/CleanShot%202021-07-27%20at%2021.30.00@2x.png)
 
@@ -207,9 +207,9 @@ def need_new_post() -> None | False | str:
     - you don't need to do anything to use them.
 - `None`: used for functions that return nothing.
 
-## Escaping from type pazzles
+## Escaping from type puzzles
 
-<!-- If you want to escape from hard type pazzle, you can use any. this is the final resort. -->
+<!-- If you want to escape from complex type puzzles, you can use any. this is the final resort. -->
 
 - `Any` Can hold instances of any type.
 - It's better not to use it.
@@ -233,7 +233,7 @@ unknown_variable: Any
 
 ---
 
-- Until 3.8, it was from `typing`, but now it's depericated.
+- Until 3.8, it was from `typing`, but now it's depreciated.
 - For `__builtins__` start with lowercase without doing anything.
     - Such as `list`, `tuple`, and `dict` etc...
 
@@ -267,12 +267,12 @@ def some_function() -> tuple[list[int], dict[str, bool]]: pass
 # Using different types of collections
 
 <!-- There are many types in `collections.abc.`  -->
-<!-- Although it's unlikely that you will use these in a fine-grained way, It's better to choose a collection with as few  methods as possible to increase portability. -->
+<!-- Although it's unlikely that you will use these in a fine-grained way, It's better to choose a collection with as few methods as possible to increase portability. -->
 <!-- The following figure shows the relationship between `collections.abc` and a sequence of built-in types defined by method inclusion rather than implementation inheritance.  -->
 <!-- It is a good idea to look at the methods used in your functions and choose the types on the left side of this diagram as much as possible. -->
 
 - There are many types in `collections.abc`.
-- It's better to use a collection with as few methods to increase portability.
+- It's better to use a collection with a few methods to increase portability.
 - The following figure shows the relationship.
     - The further to the left you go, the fewer methods it has.
     - To the right, the more methods it has.
@@ -290,13 +290,13 @@ def some_function() -> tuple[list[int], dict[str, bool]]: pass
 
 <!-- For example, if you just want to loop over a sequence of arguments in a function, you can use collections.abc.Iterable. Iterable. If you need random access, use Sequence. If you need to change the value, use a type with Mutable. -->
 
-<!-- Or, if you simply specify list as the argument type, you will not be able to pass set or dict. In particular, it is better not to set concrete types (list, tuple, dictionary, set) just because you are familiar with them. However, I think it is easier to understand using these concrete types, so you may want to try applying these concrete types first, and after you confirm that you can use fewer operators and methods, you may want to gradually move to the left side of the types. -->
+<!-- Or, if you simply specify list as the argument type, you will not be able to pass set or dict. In particular, it is better not to set concrete types (list, tuple, dictionary, set) just because you are familiar with them. However, I think it is easier to understand using these concrete types, so you may want to try applying these concrete types first. After you confirm that you can use fewer operators and methods, you may want to gradually move to the left side of the types. -->
 
 ![h:900px](images/collections-8.jpg)
 
 ---
 
-# The deferrence between tuple and others Sequences
+# The difference between tuple and others Sequences
 
 - Tuples are fixed up to the length information
     - Specify the type for the number of elements
@@ -310,16 +310,16 @@ def some_function() -> tuple[list[int], dict[str, bool]]: pass
 
 # A little more advanced: Generics type
 
-<!-- Next, there are few advaced types. -->
+<!-- Next, there are few advanced types. -->
 
 ---
 
-<!-- at first is union, merged type. top half code is an Example A function that accepts both integers and float bottom one is Union objects can be tested for equality with other union objects. -->
+<!-- at first is union, merged type. top half code is an Example A function that accepts both integers and floats bottom one is Union objects can be tested for equality with other union objects. -->
 
 # Union (Mager type)
 
 - `Union`: merged type, can be represented by `|` since 3.10
-    - You've probably seen it on haskell or typescirpt
+    - You've probably seen it on Haskell or TypeScript
 
 ```py
 from __future__ import annotations
@@ -327,7 +327,7 @@ def square(number: int | float) -> int | float:
     return number ** 2
 ```
 
-Union objects can be tested for equality with other union objects
+Union objects can be tested for equality with other union objects.
 
 ```py
 (int | str) | float == int | str | float  # Unions of unions are flattened
@@ -342,7 +342,7 @@ int | str == typing.Union[int, str]       # Compatible with typing.Union
 
 # Optional type
 
-- Shorthand, `Optional[T]` is quivalent to Union with None.
+- Shorthand, `Optional[T]` is equivalent to Union with None.
     - Behaves just like Union: `T | None`
 - If you use it in a function return value or something, it will propagate, so be careful how you use it.
 
@@ -376,16 +376,16 @@ In this case
 
 - It would be cleaner to raise a `raise RuntimeError`.
     - The cost of raising exceptions in Python is (relatively) low
-        - The performance would be fine.
+        - The performance would be satisfactory.
 - The lack of null-safe methods in Python is also a factor
     - But if there were such methods, they would be abused.
-    - Null-safe means: a method that does not raise an exception when passed None.
+    - Null-safe means a method that does not raise an exception when passed None.
 
 ---
 
 # Callable (callable object)
 
-Can be used when writing functions that take a function as an argument, such as decorator functions.
+It can be used when writing functions that take a function as an argument, such as decorator functions.
 
 ```py
 from collections.abc import Callable # since 3.9
@@ -409,7 +409,7 @@ def validate(func: Callable) -> Callable[... , Callable | tuple[Response, Litera
 
 # User-defined Generic types
 
-A generic type is typically declared by inheriting from an instantiation
+A generic type is typically declared by inheriting from an instantiation.
 
 Example: a generic mapping type
 
@@ -443,7 +443,7 @@ def lookup_name(mapping: Mapping[X, Y], key: X, default: Y) -> Y:
 
 <!-- PyCon JP 2020 was held online. The photo is from the toast of the party. -->
 
-# PyCon JP 2020 was held in online!
+# PyCon JP 2020 was held online!
 
 ![h:850px](https://live.staticflickr.com/65535/50340450898_e3a70e6f45_3k.jpg)
 
@@ -451,14 +451,14 @@ def lookup_name(mapping: Mapping[X, Y], key: X, default: Y) -> Y:
 
 <!-- _class: content -->
 
-<!-- there are Website, blog and twitter links. -->
+<!-- there are Website, blog, and Twitter links. -->
 <!-- The date of the conference is Oct. 15,16. -->
 <!-- We haven't decided what we will do for sprints and training yet. -->
 <!-- Now, CfP is over. We are currently in the process of review and adoption. -->
 
 # :mega: Announces about PyCon JP 2021 (1/2)
 
-This is the largest Python Conference in Japan
+This is the largest Python conference in Japan.
 
 - Website: https://2021.pycon.jp/
 - Blog: https://pyconjp.blogspot.com/
@@ -479,7 +479,7 @@ This is the largest Python Conference in Japan
 - Venue: Online or Hybrid:
     - On-site venue is Bellesalle Kanda, Tokyo
         - 10/15 afternoon only
-    - Working on a way to hold it in a hybrid
+    - We are working on the way to hold it in a hybrid
 - Sponsors application (second) is opened: [Blog post](https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html)
 - For the latest information, check our blog and Twitter
 - Share this slide page with other Pythonistas around you!
@@ -488,17 +488,17 @@ This is the largest Python Conference in Japan
 
 <!-- _class: subtitle -->
 
-# Updates overview & How to use new features in previous versions
+# Updates Overview & How to use new features in previous versions
 
 ---
 
-<!-- this is updates overview recently. -->
+<!-- this is an updated overview recently. -->
 
 # Recent Python updates
 
 https://www.python.org/downloads/
 
-| ver. | status   | release    | EOS        | PEP                                              | main new feture          |
+| ver. | status   | release    | EOS        | PEP                                              | main new feature         |
 | ---- | -------- | ---------- | ---------- | ------------------------------------------------ | ------------------------ |
 | 3.10 | beta 4   | 2021-10-04 | 2025-10    | [619](https://www.python.org/dev/peps/pep-0619/) | Pattern matching         |
 |  3.9 | bug fix  | 2020-10-05 | 2025-10    | [596](https://www.python.org/dev/peps/pep-0596/) | Union operators to dict  |
@@ -523,7 +523,7 @@ https://www.python.org/downloads/
 
 <!-- _class: subtitle -->
 
-<!-- next topic is new features in python3.10, will be released Nov. this year there is a difficult features. I'm not sure I can explain it well either. -->
+<!-- next topic is new features in python3.10, will be released Nov. this year there is a difficult feature. I'm not sure I can explain it well, either. -->
 
 # New Features Related to Type Hints in 3.10
 
@@ -531,9 +531,9 @@ https://www.python.org/downloads/
 
 # PEP 604: New Type Union Operator
 
-- The aforementioned union type can be used as an operator.
+- The union above type can be used as an operator.
 - You can also use it when asking `isinstance()`.
-- More intuitive, since TypeScipt and others use this notation.
+- More intuitive since TypeScipt and others use this notation.
 
 ```py
 int | str == typing.Union[int, str]  # Compatible with typing.Union
@@ -548,7 +548,7 @@ int | str == typing.Union[int, str]  # Compatible with typing.Union
 ## Motivation
 
 - Tring to write a generic decorator, it's difficult to write the type
-- Neeeded a way to represent a function that has the **same arguments as the specified function**
+- Needed a way to represent a function that has the **same arguments as the specified function**
 
 ---
 
@@ -582,8 +582,8 @@ def foo(x: int, y: str) -> int: return x + 7
 
 ## Motivation
 - We consider global variables without type hints to be type aliases.
-    - This tends to cause problems with forward references, scoping, etc.
-    - So we're going to make it possible to explicitly define type aliases.
+    - This tends to cause problems with forwarding references, scoping, etc.
+    - So, we're going to make it possible to explicitly define type aliases.
 - You can still define type aliases implicitly.
 
 ---
@@ -614,8 +614,8 @@ x: TypeAlias = “MyClass”  # type alias
 
 ## Motivation
 
-Type checker tools uses a technique called type narrowing to determine the type information
-In the this example, the `if` statement and `is None` are used to automatically narrow down the type
+Type checker tools use a technique called type narrowing to determine the type of information.
+In this example, the `if` statement and `is None` are used to automatically narrow down the type.
 
 ```py
   def func(val: Optional[str]):
@@ -652,7 +652,7 @@ However, that will not work as intended if the user function is used.
     2. Built-in types
     3. Standard collection type hints starting with lowercase (3.9)
 2. Collections and Generics
-    1. Union, Optional, Callable, User-defined Genrics
+    1. Union, Optional, Callable, User-defined Generics
 3. Python 3.10 style type hinting
     1. New Type Union Operator, Parameter Specific Variables, TypeAlias, User-Defined Type Guards
 
