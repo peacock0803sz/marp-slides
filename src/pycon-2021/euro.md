@@ -38,7 +38,7 @@ class: content
 - Thanks for considering the timezone!
 - Slide is uploaded [https://speakerdeck.com/peacock0803sz/europython2021](https://speakerdeck.com/peacock0803sz/europython2021)
     - You can see the same via QR code
-- Chat(Element): `#Conference 1: Optiver`
+- Chat(Element): [`#Conference 1: Optiver`](https://element.europython.eu/#/room/#conference-optiver:europython.eu)
 - PEP8 styles in the sample code are ignored due to space limitations
 
 ---
@@ -458,7 +458,7 @@ def lookup_name(mapping: Mapping[X, Y], key: X, default: Y) -> Y:
 
 # :mega: Announces about PyCon JP 2021 (1/2)
 
-This is the largest Python conference in Japan.
+We are the biggest Python conference in Japan.
 
 - Website: https://2021.pycon.jp/
 - Blog: https://pyconjp.blogspot.com/
@@ -478,11 +478,13 @@ This is the largest Python conference in Japan.
 
 - Venue: Online or Hybrid:
     - On-site venue is Bellesalle Kanda, Tokyo
-        - 10/15 afternoon only
-    - We are working on the way to hold it in a hybrid
-- Sponsors application (second) is opened: [Blog post](https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html)
+        - 10/15(Fri) starts at afternoon
+            - It'll avaliable only in the afternoon
+            - It may change depending on COVID-19 situation
+    - 10/16(Sat)
+- Sponsors application (second) is open: [Blog post](https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html)
 - For the latest information, check our blog and Twitter
-- Share this slide page with other Pythonistas around you!
+- Share this slide page with more Pythonistas around you!
 
 ---
 
