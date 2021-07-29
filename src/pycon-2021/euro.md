@@ -32,10 +32,10 @@ class: content
 
 ![w:430](images/QR%20Code%2053b2ccfa-5479-44ad-9700-1b3f9ed5d49c.png)
 
-- Slide is uploaded, You can see it via QR code
+- Slide is uploaded. You can see it via QR code
     - or, via [URL](https://speakerdeck.com/peacock0803sz/getting-started-with-statically-typed-programming-in-python-3-dot-10)
 - Chat(Element): `#Conference 1: Optiver`
-    - If you hove Combined or Conference Ticket, you can
+    - If you have a Combined or Conference Ticket, you can
 - PEP8 styles in the sample code are ignored
     - Due to space limitations. I'm sorry for hard to see
 
@@ -44,7 +44,7 @@ class: content
 
 <!-- _class: preface -->
 
-<!-- Nice to meet you, Hello EuroPython! -->
+<!-- Nice to meet you. Hello EuroPython! -->
 
 # Self-introduction
 
@@ -69,7 +69,7 @@ class: content
     - We're the only company in Japan that uses Plone
 - Member of PloneJP (Plone User's Group in Japan)
     - We created a short video to introducing Plone 6!
-        - https://youtu.be/SmcmzcUEwcg
+        - Comming soon
 - Operating Member of [PyCon JP Association](https://www.pycon.jp)
     - Staff of PyCon JP [2020](https://pycon.jp/2020), [2021](https://2021.pycon.jp)
     - [PyCon JP TV](https://tv.pycon.jp)'s director
@@ -304,7 +304,7 @@ def some_function() -> tuple[list[int], dict[str, bool]]: pass
 
 <!-- For example, if you just want to loop over a sequence of arguments in a function, you can use collections.abc.Iterable. Iterable. If you need random access, use Sequence. If you need to change the value, use a type with Mutable. -->
 
-<!-- Or, if you simply specify list as the argument type, you will not be able to pass set or dict. In particular, it is better not to set concrete types (list, tuple, dictionary, set) just because you are familiar with them. However, I think it is easier to understand using these concrete types, so you may want to try applying these concrete types first. After you confirm that you can use fewer operators and methods, you may want to gradually move to the left side of the types. -->
+<!-- Or, if you simply specify list as the argument type, you will not be able to pass set or dict. In particular, it is better not to set concrete types (list, tuple, dictionary, set) just because you are familiar with them. However, I think it is easier to understand using these concrete types, so you may want to first apply these concrete types. After you confirm that you can use fewer operators and methods, you may want to gradually move to the left side of the types. -->
 
 ![h:900px](images/collections-8.jpg)
 
@@ -492,9 +492,9 @@ We are the biggest Python conference in Japan.
 
 - Venue: Online or Hybrid:
     - On-site venue is Bellesalle Kanda, Tokyo
-        - 10/15(Fri) starts at afternoon
-            - It'll avaliable only in the afternoon
-            - It may change depending on COVID-19 situation
+        - 10/15(Fri) starts in the afternoon
+            - It'll be available only in the afternoon
+            - It may change depending on the COVID-19 situation
     - 10/16(Sat)
 - Sponsors application (second) is open: [Blog post](https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html)
 - For the latest information, check our blog and Twitter
