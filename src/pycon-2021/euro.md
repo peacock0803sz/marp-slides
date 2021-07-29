@@ -91,7 +91,7 @@ class: content
 
 ---
 
-<!- - _class: agenda -->
+<!-- _class: agenda -->
 
 <!-- My motivation for talking is to get the word out in a coherent way. -->
 <!-- It's been five years (Python 3.5, at 2015) since typing appeared -->
