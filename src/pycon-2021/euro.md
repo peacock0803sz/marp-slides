@@ -86,8 +86,8 @@ class: content
 1. Why do I talk about typing?
 2. Introduction of typing, How to write basically **(I most want to say)**
 3. Generics, User-Defined types (Best practice included)
-4. Backward compatibility for 3.9 or before
-5. Updates overview on 3.10
+4. Updates overview recently & Backward compatibility for 3.9 or before
+5. Overview of new features on 3.10
 
 ---
 
@@ -144,7 +144,12 @@ class: content
 
 ## Without the type hint
 
-![h:500px](images/CleanShot%202021-07-27%20at%2021.29.16@2x.png)
+![h:400px](images/CleanShot%202021-07-27%20at%2021.29.16@2x.png)
+
+We don't know the error...
+
+![h:200px](images/CleanShot%202021-07-29%20at%2015.51.18@2x.png)
+
 
 ---
 
@@ -495,7 +500,7 @@ We are the biggest Python conference in Japan.
         - 10/15(Fri) starts in the afternoon
             - It'll be available only in the afternoon
             - It may change depending on the COVID-19 situation
-    - 10/16(Sat)
+    - 10/16(Sat): All online
 - Sponsors application (second) is open: [Blog post](https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html)
 - For the latest information, check our blog and Twitter
 - Share this slide page with more Pythonistas around you!
@@ -514,12 +519,12 @@ We are the biggest Python conference in Japan.
 
 https://www.python.org/downloads/
 
-| ver. | status   | release    | EOS        | PEP                                              | main new feature         |
-| ---- | -------- | ---------- | ---------- | ------------------------------------------------ | ------------------------ |
-| 3.10 | beta 4   | 2021-10-04 | 2026-10    | [619](https://www.python.org/dev/peps/pep-0619/) | Pattern matching         |
-|  3.9 | bug fix  | 2020-10-05 | 2025-10    | [596](https://www.python.org/dev/peps/pep-0596/) | Union operators to dict  |
-|  3.8 | security | 2019-10-14 | 2024-10    | [569](https://www.python.org/dev/peps/pep-0569/) | `=` in f-string          |
-|  3.7 | Security | 2018-06-27 | 2023-06-27 | [537](https://www.python.org/dev/peps/pep-0537/) | Data classes             |
+| ver. | status   | release    | EOS        | PEP                                              | main new feature          |
+| ---- | -------- | ---------- | ---------- | ------------------------------------------------ | ------------------------- |
+| 3.10 | beta 4   | 2021-10-04 | 2026-10    | [619](https://www.python.org/dev/peps/pep-0619/) | Pattern matching          |
+|  3.9 | bug fix  | 2020-10-05 | 2025-10    | [596](https://www.python.org/dev/peps/pep-0596/) | Union operators to dict   |
+|  3.8 | security | 2019-10-14 | 2024-10    | [569](https://www.python.org/dev/peps/pep-0569/) | `=` in f-string           |
+|  3.7 | Security | 2018-06-27 | 2023-06-27 | [537](https://www.python.org/dev/peps/pep-0537/) | Data classes              |
 |  3.6 | Security | 2016-12-23 | 2021-12-23 | [494](https://www.python.org/dev/peps/pep-0494/) | Literal string (f-string) |
 
 ---
@@ -534,7 +539,7 @@ https://www.python.org/downloads/
 - It describes when disruptive changes are introduced and become mandatory.
 - In addition to typing, it was also used to call 3.x features in 2.x.
     - ex) `print_func`, `unicode_literals` etc ...
-- refs: [Official documentation](https://docs.python.org/3/library/__future__.html), [future statement](https://docs.python.org/3/reference/simple_stmts.html#future)
+- refs: [\_\_future\_\_](https://docs.python.org/3/library/__future__.html), [future statement](https://docs.python.org/3/reference/simple_stmts.html#future)
 
 ---
 
@@ -658,6 +663,31 @@ However, that will not work as intended if the user function is used.
 
 - `TypeGuard` allows you to define user-defined type guards via the new typing.
 - By using user-defined type guards, it is easier to get support for type narrowing.
+
+---
+
+<!-- The type checker assumes that the first argument matches the type specified in TypeGuard, if the function returns True. In the above example, data that passes is_str_list() will be treated as List[str]. -->
+
+<!-- Note that if this function returns False, type narrowing will not be performed. -->
+<!-- In the following example, if is_two_element_tuple(...) block, the type is narrowed to Tuple[str, str] as a result of type narrowing, while in the else block, the type remains unchanged. -->
+
+```py
+from typing import TypeGuard
+def is_str_list(val: List[object]) -> TypeGuard[List[str]]:
+    return all(isinstance(x, str) for x in val)  # this is vaild!
+```
+
+And, type narrowing works like this:
+
+```py
+def is_two_element_tuple(val: Tuple[str, ...]) -> TypeGuard[Tuple[str, str]]:
+    return len(val) == 2
+
+OneOrTwoStrs = Union[Tuple[str], Tuple[str, str]]
+def func(val: OneOrTwoStrs):
+    if is_two_element_tuple(val): reveal_type(val)  # Tuple[str, str]
+    else: reveal_type(val)   # OneOrTwoStrs
+```
 
 ---
 
