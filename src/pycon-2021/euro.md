@@ -69,7 +69,7 @@ class: content
     - We're the only company in Japan that uses Plone
 - Member of PloneJP (Plone User's Group in Japan)
     - We created a short video to introducing Plone 6!
-        - Comming soon
+        - https://youtu.be/CtpccSyRJaY
 - Operating Member of [PyCon JP Association](https://www.pycon.jp)
     - Staff of PyCon JP [2020](https://pycon.jp/2020), [2021](https://2021.pycon.jp)
     - [PyCon JP TV](https://tv.pycon.jp)'s director
