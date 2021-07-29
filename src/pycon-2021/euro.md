@@ -18,7 +18,7 @@ class: content
 
 <!-- _class: subtitle -->
 
-# Preface: before the main topic...
+# Prolog
 
 ## Self-introduction, Table of contents
 
@@ -26,27 +26,25 @@ class: content
 
 <!-- _class: preface -->
 
-<!-- Nice to meet you... -->
 <!-- If you have any questions or comments, please write here. I'd love to hear from you during the talk. -->
 
-# Hello EuroPython!
+# Notes
 
-![w:430](images/QR%20Code%20de11d3e4-7b26-4166-b24a-b66013c5bb02.png)
+![w:430](images/QR%20Code%2053b2ccfa-5479-44ad-9700-1b3f9ed5d49c.png)
 
-- Nice to meet you. Please call me **Peacock**
-- I'm Attending from Japan, now it's 17:30 in JST
-- Thanks for considering the timezone!
-- Slide is uploaded [https://speakerdeck.com/peacock0803sz/europython2021](https://speakerdeck.com/peacock0803sz/europython2021)
-    - You can see the same via QR code
-- Chat(Element): [`#Conference 1: Optiver`](https://element.europython.eu/#/room/#conference-optiver:europython.eu)
-- PEP8 styles in the sample code are ignored due to space limitations
+- Slide is uploaded, You can see it via QR code
+    - or, via [URL](https://speakerdeck.com/peacock0803sz/getting-started-with-statically-typed-programming-in-python-3-dot-10)
+- Chat(Element): `#Conference 1: Optiver`
+    - If you hove Combined or Conference Ticket, you can
+- PEP8 styles in the sample code are ignored
+    - Due to space limitations. I'm sorry for hard to see
+
 
 ---
 
 <!-- _class: preface -->
 
-<!-- let me introduce myself. -->
-<!-- In addition to my work, I'm also involved in the PyCon JP Association -->
+<!-- Nice to meet you, Hello EuroPython! -->
 
 # Self-introduction
 
@@ -54,9 +52,25 @@ class: content
 
 - Name: Peacock / Yoichi Takai
     - [Twitter](https://twitter.com/peacock0803sz/) / [GitHub](https://github.com/peacock0803sz/) / [Facebook](https://www.facebook.com/peacock0803sz): `peacock0803sz`
-- Company: [CMScom](https://cmscom.jp) (since 2019/09 ~)
+    - **Please call me Peacock**
+- I'm Attending from Japan, now it's 17:30 in JST
+    - Thanks for considering the timezone!
+- Favourites: Music (Most is classical), Skiing, Gadgets
+
+---
+
+<!-- _class: preface -->
+
+<!-- let me introduce myself. -->
+<!-- In addition to my work, I'm also involved at the PyCon JP Association -->
+
+
+- Company: [CMScom](https://cmscom.jp) (Full-time since 2020/06 ~)
     - We're the only company in Japan that uses Plone
-- [PyCon JP Association](https://www.pycon.jp)'s contributing member
+- Member of PloneJP (Plone User's Group in Japan)
+    - We created a short video to introducing Plone 6!
+        - https://youtu.be/SmcmzcUEwcg
+- Operating Member of [PyCon JP Association](https://www.pycon.jp)
     - Staff of PyCon JP [2020](https://pycon.jp/2020), [2021](https://2021.pycon.jp)
     - [PyCon JP TV](https://tv.pycon.jp)'s director
         - YouTube live about PyCons and local events held once a month
@@ -70,14 +84,14 @@ class: content
 # Today's topic
 
 1. Why do I talk about typing?
-2. Introduction of typing, How to write basically **(Most significant)**
+2. Introduction of typing, How to write basically **(I most want to say)**
 3. Generics, User-Defined types (Best practice included)
 4. Backward compatibility for 3.9 or before
 5. Updates overview on 3.10
 
 ---
 
-<!-- _class: agenda -->
+<!- - _class: agenda -->
 
 <!-- My motivation for talking is to get the word out in a coherent way. -->
 <!-- It's been five years (Python 3.5, at 2015) since typing appeared -->
@@ -331,7 +345,7 @@ Union objects can be tested for equality with other union objects.
 
 ```py
 (int | str) | float == int | str | float  # Unions of unions are flattened
-int | str | int == int |                  # Redundant types are removed
+int | str | int == int | str              # Redundant types are removed
 int | str == str | int                    # the order is ignored
 int | str == typing.Union[int, str]       # Compatible with typing.Union
 ```
@@ -361,7 +375,7 @@ age = None # This is also valid
 ```py
 def get_content() -> str | None:
     r = request.get("https://example.com")
-    if r.status_code ! = 200: # This is the guard (early return)
+    if r.status_code != 200: # This is the guard (early return)
         logging.warning("HTTP response is %d!", r.status_code)
         return None
     return r.text
@@ -490,7 +504,7 @@ We are the biggest Python conference in Japan.
 
 <!-- _class: subtitle -->
 
-# Updates Overview & How to use new features in previous versions
+# Updates Overview & How to use new features in older versions
 
 ---
 
@@ -502,7 +516,7 @@ https://www.python.org/downloads/
 
 | ver. | status   | release    | EOS        | PEP                                              | main new feature         |
 | ---- | -------- | ---------- | ---------- | ------------------------------------------------ | ------------------------ |
-| 3.10 | beta 4   | 2021-10-04 | 2025-10    | [619](https://www.python.org/dev/peps/pep-0619/) | Pattern matching         |
+| 3.10 | beta 4   | 2021-10-04 | 2026-10    | [619](https://www.python.org/dev/peps/pep-0619/) | Pattern matching         |
 |  3.9 | bug fix  | 2020-10-05 | 2025-10    | [596](https://www.python.org/dev/peps/pep-0596/) | Union operators to dict  |
 |  3.8 | security | 2019-10-14 | 2024-10    | [569](https://www.python.org/dev/peps/pep-0569/) | `=` in f-string          |
 |  3.7 | Security | 2018-06-27 | 2023-06-27 | [537](https://www.python.org/dev/peps/pep-0537/) | Data classes             |
@@ -516,6 +530,7 @@ https://www.python.org/downloads/
 # What is the `__future__` module: (dunder future)?
 
 - It exists for backward compatibility.
+- Using typing new feature in the older versions, write `from __future__ import annotations`
 - It describes when disruptive changes are introduced and become mandatory.
 - In addition to typing, it was also used to call 3.x features in 2.x.
     - ex) `print_func`, `unicode_literals` etc ...
@@ -650,12 +665,12 @@ However, that will not work as intended if the user function is used.
 # Summary
 
 1. Introduction
-    1. Let's start writing the type hint
-    2. Built-in types
-    3. Standard collection type hints starting with lowercase (3.9)
+    1. Motivation, Let's start writing, Built-in types
+    2. Standard collection type hints starting with lowercase (3.9)
 2. Collections and Generics
     1. Union, Optional, Callable, User-defined Generics
-3. Python 3.10 style type hinting
+3. Updates Overview & How to use new features in older versions
+4. Python 3.10 style type hinting
     1. New Type Union Operator, Parameter Specific Variables, TypeAlias, User-Defined Type Guards
 
 ---
