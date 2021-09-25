@@ -1,0 +1,138 @@
+/* @theme pyconjp2021 */
+@import "default";
+
+:root {
+  font-family: "Trenda Mudium", "Uビュー EL", "Noto Sans CJK JP";
+  font-weight: 500;
+  width: 1920px;
+  height: 1080px;
+  color: #111;
+}
+
+h1 {
+  color: #1097a9;
+}
+h2 {
+  color: #1097a9;
+}
+
+a {
+  color: #003388;
+}
+
+strong {
+  font-weight: 900;
+}
+
+pre code {
+  font-family: "Ricty Diminished Discord";
+  font-weight: bold;
+  color: #111;
+}
+
+pre code {
+  font-family: "Ricty Diminished Discord";
+  color: #111;
+  background-color: #eee;
+}
+
+section.title {
+  background-image: url("./images/スライド1.png");
+  text-align: right;
+}
+
+section.title h1 {
+  font-family: "Trenda", "Uビュー R", "Noto Sans CJK JP";
+  font-weight: 900;
+  font-size: 130px;
+  position: absolute;
+  right: 150px;
+  bottom: 250px;
+}
+
+section.title h2 {
+  font-size: 75px;
+  position: absolute;
+  right: 50px;
+  bottom: 0px;
+}
+
+section.subtitle {
+  background-image: url("./images/スライド1.png");
+}
+
+section.subtitle h1 {
+  font-weight: bold;
+  font-size: 100px;
+  padding: 50px;
+  position: absolute;
+  left: 50px;
+  top: 250px;
+}
+
+section.subtitle h2 {
+  font-weight: 600;
+  font-size: 70px;
+  position: absolute;
+  left: 100px;
+  top: 450px;
+}
+
+section.preface {
+  font-size: 50px;
+  background-image: url("./images/スライド2.png");
+  padding: 5%;
+}
+section.preface h1 {
+  font-weight: bold;
+  font-size: 100px;
+  position: absolute;
+  top: 50px;
+}
+
+section.preface img {
+  position: absolute;
+  top: 5%;
+  right: 0%;
+}
+
+section.full-img {
+  background-image: url("./images/スライド2.png");
+}
+section.full-img h1 {
+  font-weight: bold;
+  font-size: 80px;
+  position: relative;
+  padding-top: 5%;
+  padding-bottom: 0px;
+}
+section.full-img img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section.content {
+  font-size: 50px;
+  background-image: url("./images/スライド2.png");
+  padding: 5%;
+}
+
+section.content h1 {
+  font-weight: bold;
+  font-size: 80px;
+  position: absolute;
+  top: 80px;
+}
+section.content h2 {
+  font-weight: bold;
+  font-size: 60px;
+}
+
+section::after {
+  content: attr(data-marpit-pagination) " / " attr(data-marpit-pagination-total);
+  color: #111;
+  font-family: "Trenda";
+  font-weight: 900;
+  font-size: 40px;
+}
