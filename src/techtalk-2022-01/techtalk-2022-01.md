@@ -51,7 +51,7 @@ GitのBranch運用やCommit粒度などについてOSSやコミュニティで�
 
 # Git flow
 
-![w:1200px](https://image.itmedia.co.jp/ait/articles/1708/01/at-it-git-15-001.jpg)
+![w:1080px](https://image.itmedia.co.jp/ait/articles/1708/01/at-it-git-15-001.jpg)
 
 ---
 
