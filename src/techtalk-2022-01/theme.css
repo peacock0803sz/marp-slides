@@ -1,0 +1,38 @@
+/* @theme simple */
+@import "gaia";
+
+:root {
+  font-family: "Trenda", "Uビュー R", "Noto Sans CJK JP";
+  width: 1920px;
+  height: 1080px;
+  font-size: 58px;
+}
+
+section.title h1 {
+  font-weight: 900;
+  font-size: 128px;
+}
+
+section.title h2 {
+  font-weight: 600;
+  font-size: 84px;
+}
+
+h1 {
+  font-size: 84px;
+}
+
+h2 {
+  font-size: 72px;
+}
+
+blockquote {
+  font-size: 46px;
+}
+
+section::after {
+  content: attr(data-marpit-pagination) " / " attr(data-marpit-pagination-total);
+  font-family: "Trenda";
+  font-weight: 750;
+  font-size: 40px;
+}
