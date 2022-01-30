@@ -6,7 +6,11 @@
     "build": "npm run build:pdf && npm run build:pptx",
     "build:pdf": "marp --pdf --allow-local-files --output ../../out/ -I ./",
     "build:pptx": "marp --pptx --allow-local-files --output ../../out/ -I ./",
+    "build:html": "marp --allow-local-files --output ../../dist/osc21do -I ./ && cp -r images ../../dist/osc21do/images",
     "dev": "marp -swp --allow-local-files -I ../../"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^1.1.1"
   },
   "license": "MIT"
 }

@@ -7,6 +7,9 @@
   "workspaces": {
     "packages": ["*"]
   },
+  "scripts": {
+    "build:all": "for dir in src/*; do cd $dir && yarn install && yarn build:html && cd ../..; done"
+  },
   "license": "MIT",
   "devDependencies": {
     "@marp-team/marp-cli": "^1.0.1"
