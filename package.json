@@ -5,13 +5,18 @@
   "repository": "https://github.com/peacock0803sz/slides.git",
   "private": true,
   "workspaces": {
-    "packages": ["*"]
+    "packages": [
+      "*"
+    ]
   },
   "scripts": {
-    "build:all": "for dir in src/*; do cd $dir && yarn install && yarn build:html && cd ../..; done"
+    "build:all": "for dir in src/*; do cd $dir && yarn install && yarn build:html && cd ../..; done && marked -o dist/index.html index.md "
   },
   "license": "MIT",
   "devDependencies": {
     "@marp-team/marp-cli": "^1.0.1"
+  },
+  "dependencies": {
+    "marked": "^4.0.12"
   }
 }
