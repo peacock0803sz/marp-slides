@@ -1,6 +1,5 @@
 # My Presentation Slides
 
-
 ## CMScom Techtalk 2022/01 (社内登壇)
 
 - Talk title: Gitの運用について
