@@ -16,13 +16,13 @@
 
 - <https://event.ospn.jp/osc2021-online-hiroshima/>
 - Talk title: PyCon JP 2021スタッフからお知ら
-- Slides: [HTML](osc20hi/osc21hi-lt.html), [Speaker Deck](https://speakerdeck.com/peacock0803sz/announcement-from-pycon-jp-2021)
+- Slides: [HTML](osc21hi/osc21hi-lt.html), [Speaker Deck](https://speakerdeck.com/peacock0803sz/announcement-from-pycon-jp-2021)
 
 ## EuroPython 2021 Online
 
 - <https://ep2021.europython.eu/>
 - Talk title: Getting Started with Statically Typed Programming in Python 3.10
-- Slides: [HTML](europython2021/europython2021.html), [Speaker Deck](https://speakerdeck.com/peacock0803sz/getting-started-with-statically-typed-programming-in-python-3-dot-10)
+- Slides: [HTML](europython2021/euro.html), [Speaker Deck](https://speakerdeck.com/peacock0803sz/getting-started-with-statically-typed-programming-in-python-3-dot-10)
 
 ## Open Source Conference 2021 Online Hokkaido
 
