@@ -1,0 +1,42 @@
+{
+  "name": "slidev-theme-pycon-us-2022",
+  "version": "0.0.0",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "scripts": {
+    "build": "slidev build example.md",
+    "dev": "slidev example.md",
+    "export": "slidev export example.md",
+    "screenshot": "slidev export example.md --format png"
+  },
+  "dependencies": {
+    "@slidev/theme-apple-basic": "^0.20.0",
+    "@slidev/theme-bricks": "^0.0.2",
+    "@slidev/theme-default": "^0.21.1",
+    "@slidev/types": "^0.28.6",
+    "codemirror-theme-vars": "^0.1.1",
+    "prism-theme-vars": "^0.2.2",
+    "theme-vitesse": "^0.1.14"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^0.28.6"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "slidev": ">=0.19.3"
+  },
+  "//": "Learn more: https://sli.dev/themes/write-a-theme.html",
+  "slidev": {
+    "colorSchema": "both",
+    "highlighter": "all",
+    "defaults": {
+      "fonts": {
+        "sans": "Nunito Sans",
+        "mono": "Jetbrains Mono"
+      },
+      "hightlighter": "prism"
+    }
+  }
+}
