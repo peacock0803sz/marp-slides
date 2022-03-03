@@ -45,7 +45,7 @@ Slides: <https://slides.peacock0803sz.com/us-pycon-2022/>
 </div>
 
 <div>
-    <img src="images/QR Code 53b2ccfa-5479-44ad-9700-1b3f9ed5d49c.png" class="v-auto">
+    <img src="/images/qrcode.png" class="v-auto">
 </div>
 
 </div>
@@ -74,7 +74,7 @@ Slides: <https://slides.peacock0803sz.com/us-pycon-2022/>
 </div>
 
 <div>
-    <img src="images/peacock0803sz.jpg" class="v-auto">
+    <img src="/images/peacock0803sz.jpg" class="v-auto">
 </div>
 </div>
 
@@ -153,11 +153,11 @@ layout: section
 
 ## Without the type hint
 
-<img src="images/CleanShot%202021-07-27%20at%2021.29.16@2x.png" class="h-40">
+<img src="/images/1.png" class="h-40">
 
 We don't know the error...
 
-<img src="images/CleanShot%202021-07-29%20at%2015.51.18@2x.png" class="h-30">
+<img src="/images/2.png" class="h-30">
 
 
 ---
@@ -166,13 +166,13 @@ We don't know the error...
 
 ## With the type hint
 
-<img src="images/CleanShot%202021-07-27%20at%2021.30.00@2x.png" class="h-30">
+<img src="/images/3.png" class="h-30">
 
 <!-- and, the editor can tell the argument is wrong -->
 
 ## Editor tells a wrong argument
 
-<img src="images/CleanShot%202021-07-27%20at%2021.41.30@2x.png" class="h-25">
+<img src="/images/4.png" class="h-25">
 
 
 ---
@@ -224,7 +224,7 @@ def need_new_post() -> None | False | str:
 - After the arguments, write colon and type
 - Before the colon at the end of the function definition, write an arrow and type
 
-<img src="images/CleanShot%202021-07-27%20at%2021.30.00@2x.png" class="h-40">
+<img src="/images/3.png" class="h-40">
 
 ---
 
@@ -320,7 +320,7 @@ def some_function() -> tuple[list[int], dict[str, bool]]: pass
 <!-- Or, if you simply specify list as the argument type, you will not be able to pass set or dict. In particular, it is better not to set concrete types (list, tuple, dictionary, set) just because you are familiar with them. However, I think it is easier to understand using these concrete types, so you may want to first apply these concrete types. After you confirm that you can use fewer operators and methods, you may want to gradually move to the left side of the types. -->
 
 <!-- TODO: REPLACE with mermeid! -->
-<img src="images/collections-8.jpg" class="h-110">
+<img src="/images/collections-8.jpg" class="h-110">
 
 ---
 
@@ -472,10 +472,10 @@ https://www.python.org/downloads/
 | ---- | -------- | ---------- | ---------- | ------------------------------------------------ | ------------------------- |
 | 3.11 | beta 4   | 2021-10-04 | 2026-10    | [619](https://www.python.org/dev/peps/pep-0619/) | Pattern matching          |
 | 3.10 | bug fix  | 2021-10-04 | 2026-10    | [619](https://www.python.org/dev/peps/pep-0619/) | Pattern matching          |
-|  3.9 | bug fix  | 2020-10-05 | 2025-10    | [596](https://www.python.org/dev/peps/pep-0596/) | Union operators to dict   |
-|  3.8 | security | 2019-10-14 | 2024-10    | [569](https://www.python.org/dev/peps/pep-0569/) | `=` in f-string           |
-|  3.7 | Security | 2018-06-27 | 2023-06-27 | [537](https://www.python.org/dev/peps/pep-0537/) | Data classes              |
-|  3.6 | Security | 2016-12-23 | 2021-12-23 | [494](https://www.python.org/dev/peps/pep-0494/) | Literal string (f-string) |
+| 3.9  | bug fix  | 2020-10-05 | 2025-10    | [596](https://www.python.org/dev/peps/pep-0596/) | Union operators to dict   |
+| 3.8  | security | 2019-10-14 | 2024-10    | [569](https://www.python.org/dev/peps/pep-0569/) | `=` in f-string           |
+| 3.7  | Security | 2018-06-27 | 2023-06-27 | [537](https://www.python.org/dev/peps/pep-0537/) | Data classes              |
+| 3.6  | Security | 2016-12-23 | 2021-12-23 | [494](https://www.python.org/dev/peps/pep-0494/) | Literal string (f-string) |
 
 ---
 
