@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "pyconus2022/(.*)", "destination": "pyconus2022/index.html" }
+  ]
+}
