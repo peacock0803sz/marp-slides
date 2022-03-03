@@ -6,7 +6,7 @@
     "slidev"
   ],
   "scripts": {
-    "build": "slidev build pyconus2022.md",
+    "build:html": "slidev build pyconus2022.md",
     "dev": "slidev pyconus2022.md",
     "export": "slidev export pyconus2022.md",
     "screenshot": "slidev export pyconus2022.md --format png"
