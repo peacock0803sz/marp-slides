@@ -6,10 +6,10 @@
     "slidev"
   ],
   "scripts": {
-    "build": "slidev build example.md",
-    "dev": "slidev example.md",
-    "export": "slidev export example.md",
-    "screenshot": "slidev export example.md --format png"
+    "build": "slidev build pyconus2022.md",
+    "dev": "slidev pyconus2022.md",
+    "export": "slidev export pyconus2022.md",
+    "screenshot": "slidev export pyconus2022.md --format png"
   },
   "dependencies": {
     "@slidev/theme-apple-basic": "^0.20.0",
