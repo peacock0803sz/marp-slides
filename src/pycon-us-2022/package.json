@@ -6,7 +6,7 @@
     "slidev"
   ],
   "scripts": {
-    "build:html": "slidev build pyconus2022.md && cp -r dist/* ../../dist/pyconus2022/",
+    "build:html": "slidev build pyconus2022.md && mkdir -p ../../dist/pycon-us-2022 && cp -r dist/* ../../dist/pyconus2022/",
     "dev": "slidev pyconus2022.md",
     "export": "slidev export pyconus2022.md",
     "screenshot": "slidev export pyconus2022.md --format png"
