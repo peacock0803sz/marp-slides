@@ -13,6 +13,7 @@ defaults:
     layout: 'default'
 
 layout: intro
+image: image/intro.png
 ---
 
 # Getting Started <br> with Statically Typed Programming <br> in Python 3.10
@@ -81,14 +82,13 @@ Slides: <https://slides.peacock0803sz.com/us-pycon-2022/>
 ---
 
 - Company: [CMScom](https://cmscom.jp) (Full-time since 2020/06 ~)
-    - Web application developer, Flask/Pyramid/FastAPI
+    - Web application developer, Flask / Pyramid / Plone / FastAPI
 - Member of PloneJP (Plone User's Group in Japan)
+- Staff of PyCon JP (since 2020 - ), 2022: Vice Chair
 - Operating Member of [PyCon JP Association](https://www.pycon.jp)
-    - Staff of PyCon JP (since 2020 - ), 2022: Vice Chair
-    - [PyCon JP TV](https://tv.pycon.jp)'s director
-        - YouTube live about PyCons and local events held once a month
+    - Director of [PyCon JP TV](https://tv.pycon.jp)(YouTube live about PyCons and local events held once a month)
 - I have experience learning haskell and typescript.
-- I'm reading "[Types and Programming Languages](https://www.cis.upenn.edu/~bcpierce/tapl/)" (a.k.a. TaPL)
+- Now, reading "[Types and Programming Languages](https://www.cis.upenn.edu/~bcpierce/tapl/)" (a.k.a. TaPL)
 
 ---
 
@@ -210,7 +210,7 @@ Boss < It looks like this function may return 3 types... Isn't that too much?
 You < I see. That could be a bad design. Let me fix it.
 Boss < Sure, please.
 
-```py {1}
+```py {1|2|3|4}
 def need_new_post() -> None | False | str:
     if ...: retrun None
     elif ...: retrun False
@@ -310,7 +310,31 @@ def some_function() -> tuple[list[int], dict[str, bool]]: pass
 
 ---
 
+<div class="absolute top-5">
+
 # Great method inheritance tree
+
+```mermaid
+graph TD
+L(list) --> MSq[Mutable Squence] --> Sq[Squence]
+T(tuple) --> C[Collection]
+Sq[Squence] --> C[Collection]
+Sq[Squence] --> Rev[Reversible] --> Iter[Iterable]
+Gen[Generator] --> Iter[Iterable]
+D(dict) --> MM[Mutable Mapping] --> M[Mapping]
+M[Mapping] --> C[Collection] --> Ct[Container]
+C[Collection] --> Iter[Iterable]
+fset(frozenset) --> Set[Set]
+cSet(set) --> MSet[MutableSet] --> Set[Set] --> C[Collection] --> Sized[Sized]
+IView[ItemsView] --> MView[MappingView]
+KView[KeysView] --> MView[MappingView]
+VView[ValuesView] --> MView[MappingView] --> Sized[Sized]
+IView[ItemsView] --> Set[Set]
+KView[KeysView] --> Set[Set]
+VView[ValuesView] --> C[Colleciton]
+```
+
+</div>
 
 <!-- The further to the left you go, the fewer methods it has. -->
 <!-- To the right, the more methods it has. -->
@@ -320,7 +344,7 @@ def some_function() -> tuple[list[int], dict[str, bool]]: pass
 <!-- Or, if you simply specify list as the argument type, you will not be able to pass set or dict. In particular, it is better not to set concrete types (list, tuple, dictionary, set) just because you are familiar with them. However, I think it is easier to understand using these concrete types, so you may want to first apply these concrete types. After you confirm that you can use fewer operators and methods, you may want to gradually move to the left side of the types. -->
 
 <!-- TODO: REPLACE with mermeid! -->
-<img src="/images/collections-8.jpg" class="h-110">
+<!-- <img src="/images/collections-8.jpg" class="h-110"> -->
 
 ---
 
@@ -332,6 +356,8 @@ def some_function() -> tuple[list[int], dict[str, bool]]: pass
 - A sequence, such as a list, has the same constraint for all elements in the element
     - Can be used regardless of the length of the sequence by setting only one element.
 
+---
+layout: section
 ---
 
 # A little more advanced: Generics type
@@ -413,19 +439,26 @@ In this case
 
 It can be used when writing functions that take a function as an argument, such as decorator functions.
 
-```py {3|5|10,11|12}
-from collections.abc import Callable # since 3.9
-from fuctools import wraps
-def validate(func: Callable) -> Callable[... , Callable | tuple[Response, Literal[400]]]:
+```py {1,2,3|6|11,12|13|14,15|16}
+from collections.abc import Callable  # since 3.9
+from functools import wraps
+from typing import Literal
+def validate(
+    func: Callable,
+) -> Callable[..., Callable | tuple[Response, Literal[400]]]:
     @wraps(func)
     def wrapper(*args, **kw) -> Callable | tuple[Response, Literal[400]]:
         try:
             j = request.json
-            if j is None: raise BadRequest
+            if j is None:
+                raise BadRequest
         except BadRequest:
-            return jsonify({"data": [], "errors": {"message": ERROR_MESSAGE, "code": 400}}), 400
+            j = jsonify({"data": [], "errors": {"message": ERR_MSG, "code": 400}})
+            return r, 400
         return func(*args, **kw)
+
     return wrapper
+
 ```
 
 ---
@@ -468,14 +501,14 @@ layout: section
 
 https://www.python.org/downloads/
 
-| Ver. | Status   | Release    | EoS        | Release Schedule                                 | main new feature          |
-| ---- | -------- | ---------- | ---------- | ------------------------------------------------ | ------------------------- |
-| 3.11 | beta 4   | 2021-10-04 | 2026-10    | [619](https://www.python.org/dev/peps/pep-0619/) | Pattern matching          |
-| 3.10 | bug fix  | 2021-10-04 | 2026-10    | [619](https://www.python.org/dev/peps/pep-0619/) | Pattern matching          |
-| 3.9  | bug fix  | 2020-10-05 | 2025-10    | [596](https://www.python.org/dev/peps/pep-0596/) | Union operators to dict   |
-| 3.8  | security | 2019-10-14 | 2024-10    | [569](https://www.python.org/dev/peps/pep-0569/) | `=` in f-string           |
-| 3.7  | Security | 2018-06-27 | 2023-06-27 | [537](https://www.python.org/dev/peps/pep-0537/) | Data classes              |
-| 3.6  | Security | 2016-12-23 | 2021-12-23 | [494](https://www.python.org/dev/peps/pep-0494/) | Literal string (f-string) |
+| Ver. | Status   | Release | EoS     | Release PEP                                      | Main new feature          |
+| ---- | -------- | ------- | ------- | ------------------------------------------------ | ------------------------- |
+| 3.11 | beta 4   | 2021-10 | 2026-10 | [619](https://www.python.org/dev/peps/pep-0619/) | Pattern matching          |
+| 3.10 | bug fix  | 2021-10 | 2026-10 | [619](https://www.python.org/dev/peps/pep-0619/) | Pattern matching          |
+| 3.9  | bug fix  | 2020-10 | 2025-10 | [596](https://www.python.org/dev/peps/pep-0596/) | Union operators to dict   |
+| 3.8  | security | 2019-10 | 2024-10 | [569](https://www.python.org/dev/peps/pep-0569/) | `=` in f-string           |
+| 3.7  | Security | 2018-06 | 2023-06 | [537](https://www.python.org/dev/peps/pep-0537/) | Data classes              |
+| 3.6  | Security | 2016-12 | 2021-12 | [494](https://www.python.org/dev/peps/pep-0494/) | Literal string (f-string) |
 
 ---
 

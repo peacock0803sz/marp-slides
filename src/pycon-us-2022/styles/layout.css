@@ -20,36 +20,39 @@
 } */
 
 .slidev-layout.intro h1 {
-  @apply my-24 text-right text-8xl font-bold;
+  @apply text-left font-bold;
   font: normal normal normal 'Futura DC D';
   letter-spacing: 0px;
   opacity: 1;
 }
 
 .slidev-layout.intro h2 {
-  @apply py-96 my-24 text-right text-5xl;
+  @apply py-96 my-24 text-left text-5xl;
   font: normal normal bold Texta;
   letter-spacing: 0px;
   opacity: 1;
 }
 
-.slidev-layout.subtitle h1 {
-  @apply my-24 pt-64 text-right text-8xl font-bold;
+.slidev-layout.section h1 {
+  @apply text-left font-bold;
   font: normal normal bold Texta;
   letter-spacing: 0px;
   opacity: 1;
 }
 
-.slidev-layout.subtitle h2 {
-  @apply py-0 my-0 text-right text-6xl font-medium;
+.slidev-layout.section h2 {
+  @apply text-left font-medium;
   font: normal normal bold Texta;
   letter-spacing: 0px;
   opacity: 1;
 }
 
 .slidev-layout.default {
-  @apply text-5xl m-16
+  @apply text-xl m-auto;
   font: normal normal bold Texta;
   letter-spacing: 0px;
   opacity: 1;
+}
+.slidev-layout.default code {
+  @apply text-1xl;
 }

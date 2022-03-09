@@ -1,42 +1,16 @@
 {
-  "name": "slidev-theme-pycon-us-2022",
-  "version": "0.0.0",
-  "keywords": [
-    "slidev-theme",
-    "slidev"
-  ],
+  "private": true,
   "scripts": {
-    "build:html": "slidev build pyconus2022.md && mkdir -p ../../dist/pycon-us-2022 && cp -r dist/ ../../dist/pyconus2022/",
+    "build": "slidev build",
+    "build:html": "slidev build pyconus2022.md",
     "dev": "slidev pyconus2022.md",
-    "export": "slidev export pyconus2022.md",
-    "screenshot": "slidev export pyconus2022.md --format png"
+    "export": "slidev export"
   },
   "dependencies": {
+    "@slidev/cli": "^0.28.9",
     "@slidev/theme-apple-basic": "^0.20.0",
-    "@slidev/theme-bricks": "^0.0.2",
-    "@slidev/theme-default": "^0.21.1",
-    "@slidev/types": "^0.28.6",
-    "codemirror-theme-vars": "^0.1.1",
-    "prism-theme-vars": "^0.2.2",
-    "theme-vitesse": "^0.1.14"
+    "@slidev/theme-default": "*",
+    "@slidev/theme-seriph": "*"
   },
-  "devDependencies": {
-    "@slidev/cli": "^0.28.6"
-  },
-  "engines": {
-    "node": ">=14.0.0",
-    "slidev": ">=0.19.3"
-  },
-  "//": "Learn more: https://sli.dev/themes/write-a-theme.html",
-  "slidev": {
-    "colorSchema": "both",
-    "highlighter": "all",
-    "defaults": {
-      "fonts": {
-        "sans": "Nunito Sans",
-        "mono": "Jetbrains Mono"
-      },
-      "hightlighter": "prism"
-    }
-  }
+  "name": "pycon-us-2022"
 }
