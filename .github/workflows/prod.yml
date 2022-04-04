@@ -32,7 +32,6 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        role-to-assume: ${{ env.AWS_ROLE_ARN }}
         aws-region: ${{ env.AWS_REGION }}
 
     - name: Setup node
@@ -40,7 +39,7 @@ jobs:
       with:
         node-version: '14'
 
-    - name: Build and deploy for fcpj domain bucket
+    - name: Build and deploy to s3 bucket
       env:
         S3_REPOSITORY: s3://${{ env.S3_BUCKET }}
       run: |
