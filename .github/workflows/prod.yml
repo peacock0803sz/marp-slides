@@ -1,0 +1,48 @@
+on:
+  push:
+    branches:
+    - master
+
+name: DeployDevelop
+
+env:
+  AWS_REGION: ap-northeast-1
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    outputs:
+      status: ${{ job.status }}
+    env:
+      AWS_REGION: ap-northeast-1
+      AWS_ROLE_ARN: arn:aws:iam::981709652793:role/PipelineUploadS3
+      S3_BUCKET: slides.peacock0803sz.com
+      CF_DISTRIBUTION_ID: E2T87ZLQYFG0XY
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configure AWS Credentials From Web Identity
+      uses: aws-actions/configure-aws-credentials@master
+      with:
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14'
+
+    - name: Build and deploy for fcpj domain bucket
+      env:
+        S3_REPOSITORY: s3://${{ env.S3_BUCKET }}
+      run: |
+        yarn
+        yarn build:all
+        aws s3 sync ./dist $S3_REPOSITORY/
+        aws cloudfront create-invalidation --distribution-id ${CF_DISTRIBUTION_ID} --paths "/*"
