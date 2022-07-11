@@ -2,6 +2,14 @@
 
 # My Presentation Slides
 
+## PyCon US 2022
+
+This is the first speaking in-person
+
+- <https://us.pycon.org/2022/schedule/presentation/23/>
+- Talk title: Getting Started with Statically Typed Programming in Python 3.10
+- Slides: [HTML](https://slides.peacock0803sz.com/pyconus2022/index.html)
+
 ## CMScom Techtalk 2022/01 (社内登壇)
 
 - Talk title: Gitの運用について
