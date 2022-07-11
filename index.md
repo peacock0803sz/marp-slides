@@ -1,4 +1,9 @@
-<head><meta charset="utf-8"></meta></head>
+<head>
+  <meta charset="utf-8"></meta>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css" integrity="sha512-KUoB3bZ1XRBYj1QcH4BHCQjurAZnCO3WdrswyLDtp7BMwCw7dPZngSLqILf68SGgvnWHTD5pPaYrXi6wiRJ65g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="markdown-body">
 
 # My Presentation Slides
 
@@ -50,3 +55,5 @@ This is the first speaking in-person
 - Date: 2021/05/07
 - Talk title: 2021年の型駆動設計(開発)
 - Slides: [HTML](techtalk-2021-05/techtalk-2021-05.html), [Speaker Deck](https://speakerdeck.com/peacock0803sz/type-driven-design-in-2021-python)
+
+</body>
