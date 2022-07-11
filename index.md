@@ -24,7 +24,7 @@ This is the first speaking in-person
 ## Open Source Conference 2021 Online Hiroshima
 
 - <https://event.ospn.jp/osc2021-online-hiroshima/>
-- Talk title: PyCon JP 2021スタッフからお知ら
+- Talk title: PyCon JP 2021スタッフからお知らせ
 - Slides: [HTML](osc21hi/osc21hi-lt.html), [Speaker Deck](https://speakerdeck.com/peacock0803sz/announcement-from-pycon-jp-2021)
 
 ## EuroPython 2021 Online
