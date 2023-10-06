@@ -1,22 +1,16 @@
 {
-  "name": "marp-slides",
+  "name": "slides",
   "version": "0.9.0",
-  "main": "index.js",
-  "repository": "https://github.com/peacock0803sz/slides.git",
-  "private": true,
-  "workspaces": {
-    "packages": [
-      "*"
-    ]
-  },
+  "description": "My presentation slides",
   "scripts": {
-    "build:all": "for dir in src/*; do cd $dir && yarn install && yarn build:html && cd ../..; done && marked -o dist/index.html index.md && echo '<!DOCTYPE html>'"
+    "build:all": "for dir in talks/*; do cd $dir && pnpm run build:html && cd ../..; done",
+    "build:index": "marked -o dist/index.html index.md && echo '<!DOCTYPE html>'"
   },
+  "keywords": [],
+  "author": "Peacock (Yoichi Takai)",
   "license": "MIT",
-  "devDependencies": {
-    "@marp-team/marp-cli": "^1.0.1"
-  },
-  "dependencies": {
+    "devDependencies": {
+    "@marp-team/marp-cli": "^1.0.1",
     "marked": "^4.0.12"
   }
 }
