@@ -51,6 +51,6 @@ jobs:
         S3_REPOSITORY: s3://${{ env.S3_BUCKET }}
       run: |
         pnpm install
-        for d in $(find talks -type d -maxdepth 1); do pnpm -C $d run build:html; done
+        for d in $(ls -1 talks); do pnpm -C $d run build:html; done
         aws s3 sync ./dist $S3_REPOSITORY/
         aws cloudfront create-invalidation --distribution-id ${CF_DISTRIBUTION_ID} --paths "/*"
