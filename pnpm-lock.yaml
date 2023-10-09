@@ -12,33 +12,33 @@ importers:
         specifier: ^1.0.1
         version: 1.7.2
 
-  talks/marp/osc21do:
+  talks/osc21do:
     devDependencies:
       '@marp-team/marp-cli':
         specifier: ^1.1.1
         version: 1.7.2
 
-  talks/marp/osc21hi:
+  talks/osc21hi:
     devDependencies:
       '@marp-team/marp-cli':
         specifier: ^1.1.1
         version: 1.7.2
 
-  talks/marp/pycon-2021:
+  talks/pycon-2021:
     devDependencies:
       '@marp-team/marp-cli':
         specifier: ^1.1.1
         version: 1.7.2
 
-  talks/marp/stapy74:
+  talks/stapy74:
     devDependencies:
       '@marp-team/marp-cli':
         specifier: ^1.1.1
         version: 1.7.2
 
-  talks/marp/techtalk-2021-05: {}
+  talks/techtalk-2021-05: {}
 
-  talks/marp/techtalk-2022-01:
+  talks/techtalk-2022-01:
     devDependencies:
       '@marp-team/marp-cli':
         specifier: ^1.1.1

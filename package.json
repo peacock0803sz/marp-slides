@@ -1,14 +1,11 @@
 {
-  "name": "slides",
-  "version": "0.9.0",
+  "name": "marp-slides",
+  "version": "1.0.0",
   "description": "My presentation slides",
-  "scripts": {
-    "build:all": "for dir in talks/*; do cd $dir && pnpm run build:html && cd ../..; done"
-  },
   "keywords": [],
   "author": "Peacock (Yoichi Takai)",
   "license": "MIT",
-    "dependencies": {
+  "dependencies": {
     "@marp-team/marp-cli": "^1.0.1"
   }
 }
