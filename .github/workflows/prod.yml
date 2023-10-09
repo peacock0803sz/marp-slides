@@ -2,6 +2,8 @@ on:
   push:
     branches:
     - master
+    paths:
+    - "talks/**"
 
 name: DeployDevelop
 
@@ -45,7 +47,7 @@ jobs:
         S3_REPOSITORY: s3://${{ env.S3_BUCKET }}
       run: |
         pnpm install
-        pnpm build:marp
+        pnpm build:all
         pnpm build:index
         aws s3 sync ./dist $S3_REPOSITORY/
         aws cloudfront create-invalidation --distribution-id ${CF_DISTRIBUTION_ID} --paths "/*"
